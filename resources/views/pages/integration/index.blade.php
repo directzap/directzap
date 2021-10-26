@@ -38,6 +38,9 @@
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
+                    ' Access-Control-Allow-Methods': 'GET',
+                    'Access-Control-Allow-Headers': '*',
+                    'Access-Control-Max-Age': '86400',
                     'Authorization': token,
 
                 },
