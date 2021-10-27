@@ -31,23 +31,24 @@
 
         function braip() {
             var token =
-                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjE1YmM4NjdjZWMwYjQzMmI0YzA1ZDNmNjBiZDk2NGFmZmQ1YzA3YjBlNDE1N2ZkMjIzYmE3MTBmNDM3YzcxMGYwYjFmZDE0NjRmNDFmYzljIn0.eyJhdWQiOiI0NjI3MyIsImp0aSI6IjE1YmM4NjdjZWMwYjQzMmI0YzA1ZDNmNjBiZDk2NGFmZmQ1YzA3YjBlNDE1N2ZkMjIzYmE3MTBmNDM3YzcxMGYwYjFmZDE0NjRmNDFmYzljIiwiaWF0IjoxNjM1MjcyNTg3LCJuYmYiOjE2MzUyNzI1ODcsImV4cCI6MTY2NjgwODU4Nywic3ViIjoiMzM4OTQ0MiIsInNjb3BlcyI6W119.SMVyxbINeWtV9-AWvCloGGn74sBS4z-HmtpTa2k_Sqf9epyZ2u6qkTWjWhCIyF1ZS4ia-RpuEinpmFs9J3uRgp1C-HmuvH_JWTiFjIHNupWCKaJtq35Z8JWjE-4Q2rGtuXnxArdzG4f80r2Dnuadp-rFQbxVMfVgVWuay2uXBtse0WGsaPK8zrj855i8VP1kAN30NNgm1Bl9AHIUfNDjWibCD28oSqr1HxV9JKSrPFdNMEg5XXOvoH9H1B51urA93A-slSkCMC9vYU1PMTIQ8LqQxsVLWa9eI7iBNHvmZCBVPH7Xg_qRv3s-3E5ABz9H4u5LUOGxo3-M-lWYeFZOEv6Rq7vHTbmITBW8KI4oAoG2Rb2SEim-32sVmJ8kEQCyakAc35qG9jurqQXBG9f3p2vdd9Bceuz0jfJF-KGiSnROkWxNFbmB1YZU-fPtyiuA8JY2W6pbGj6xB4YDBwYs4f-QQgnIe5ECoHBgJuTkJxmuCWwWq2FM8JfQ3RQManDM41Lv1yoEBsqn6z9kWpC7Tvs1k5l3GHA40F6pCVoTMB26E9g4sY9nLx6ggIGh042EgUw2EOOc9SnZ_epeoKtpxKCfP5mp-jz7YcUoeqYc31GvjBxsf32gkJJr89iY8nldvZNbf_4acxuJU6Hz3NYJzCYEXvXNqgCW90IbOEM1xv4";
+                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImViY2Y5MDU2Y2VhYzljNDc3MTVkMjAxODE3NzY2Y2E2ZGMwMWE0Y2Q1OWJhNzBiNGZmYzQ5ZDNiODI0MzkyMDA2N2Q1OTlhYTlhOTRlM2JjIn0.eyJhdWQiOiI0NjQ3MyIsImp0aSI6ImViY2Y5MDU2Y2VhYzljNDc3MTVkMjAxODE3NzY2Y2E2ZGMwMWE0Y2Q1OWJhNzBiNGZmYzQ5ZDNiODI0MzkyMDA2N2Q1OTlhYTlhOTRlM2JjIiwiaWF0IjoxNjM1MzY0Mjg1LCJuYmYiOjE2MzUzNjQyODUsImV4cCI6MTY2NjkwMDI4NSwic3ViIjoiNzA3NTE0Iiwic2NvcGVzIjpbXX0.EdTMVcpHWvL4jubr_CE3uDNePs9yZJ0p3ktaSmtVNvc2cbqYj0P2OxQP5XMEelmNDiNMhtbfG2cellOPfoDC4fJ0WC7xVBdqS6vWdnZ0NDSxm_mfJOPoukaB9xpCNQkmN70_mIPZDyUQ-xfpg4tGfGTBHdtk2xtKl_w7dmxRJuIBJPijm8paKU21bQ0pRI52QuzcfusR7xpeotG6OJYg2slebAA6kL4fPEMe9pAB_abGcg-LubHkU5-y2xoROp9gTm5uof4VI_j1YN9qY7onvNYjetzFvGMX7Syqo_SK8w2Qqrko3Y5rX5LXjmNDAdI7DqnIYyztwWl2-ySrNvu409MMSZvfMfv9dPrn4y0Pai2v_3NzqB_dujsimcfqW2otqvl97rOCAtnsM7H__eMhqPiLYrzdMyllzoub1dXt1i20JfkCtELF5oeg88VSZWMD-D0OQciiN8HmjlwqSMvfy_qI8z-P-X2_fhMX_meXA_HNZ9Il7WbxstIi58Lu5DE9H7wWhyuTt8Dn1WsTEkU2tvgyTWaPPZRWgNTdmuOJH4z934n13Mqa0eyMnA4eIGe8YbsccOdhFNU9W2heBz5xKSR0NTM6HUWpfuICGilVAUQG-vdYHlMPsgGT3h-p9mDO6qXHz0QFU8Gz867mXRJIVai8-s8W_NwrQde4SVGvzkY";
             $.ajax({
                 type: "GET",
-                dataType: "jsonp",
-                contentType: 'application/json',
-                crossDomain: true,
+                dataType: "json",
+                // crossDomain: true,
                 headers: {
-                    'Access-Control-Allow-Credentials': true,
                     'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET',
-                    'Access-Control-Allow-Headers': 'application/json',
                     'Authorization': token,
                 },
                 url: 'https://ev.braip.com/api/vendas',
+                data: {
+                    'date_min': '2021-10-10 10:00:00',
+                    'date_max': '2021-10-20 10:00:00'
+                },
                 success: function(response) {
                     console.log(response);;
-                }
+                },
+
             });
         }
     </script>
