@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('company')->nullable();
             $table->string('username')->nullable();
+            $table->longText('token_braip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

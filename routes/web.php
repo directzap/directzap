@@ -11,6 +11,7 @@ use App\Http\Controllers\SingUpController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\CommissionsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BraipController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\IntegrationController;
 use App\Http\Controllers\LinksController;
@@ -58,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('admin', AdminController::class);
 
     Route::resource('integration', IntegrationController::class);
+    Route::get('braip', [BraipController::class, 'index'])->name('braip.index');
 
     Route::resource('links', LinksController::class);
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Integration;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class IntegrationController extends Controller
 {
@@ -14,7 +16,8 @@ class IntegrationController extends Controller
      */
     public function index()
     {
-        $token = "df351daaec0b5f2dc849f240f8fdbda3f608dcce";
+
+        // dd($response->json()['data']);
         return view('pages.integration.index');
     }
 
@@ -68,9 +71,17 @@ class IntegrationController extends Controller
      * @param  \App\Models\Integration  $integration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Integration $integration)
+    public function update(Request $request, $id)
     {
-        //
+
+
+        $user = User::find($id);
+        $user->fill([
+            'token_braip' => $request->token_braip
+        ]);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Cadastrado com sucesso');
     }
 
     /**

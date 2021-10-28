@@ -24,6 +24,7 @@ class User extends Authenticatable
         'type',
         'avatar',
         'company',
+        'token_braip'
     ];
 
     /**
