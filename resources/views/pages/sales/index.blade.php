@@ -5,7 +5,7 @@
             <section id="multilingual-datatable">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="text-center">Estatisticas de Conversão</h4>
+                        <h4 class="text-center"></h4></h4>
                     </div>
                     <div class="col-12 no-padding-mobile">
                         <div class="card">
@@ -32,47 +32,79 @@
                             <table id="colabs-table">
                                 <thead>
                                     <tr>
-                                        <th>Categoria</th>
-                                        <th>Código</th>
-                                        <th>Porcentagem</th>
-                                        <th>Valor</th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Data
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Tipo
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Status
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Mensagem
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Atendente
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Produto
+                                            </h4>
+                                        </th>
+                                        <th>
+                                            <h4 class="title-table">
+                                                Cliente
+                                            </h4>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody id="body_table_colabs">
                                     <tr style="width:100%;">
-                                        <td>Conversão Geral</td>
                                         <td>
-                                            256
+                                            <h6 class="content-text">
+                                               27/10/2021 18:21
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="content-text">
+                                               cart
+                                            </h6>
                                         </td>
                                         <td class="d-flex justify-content-center align-items-center">
-                                           65,5%
+                                            <h6 class="content-text">
+                                                <i data-feather='circle'></i>
+                                            </h6>
                                         </td>
                                         <td class="">
-                                           R$ 3.458,00
-                                        </td>
-                                    </tr>
-                                    <tr style="width:100%;">
-                                        <td>Conversão Cartão</td>
-                                        <td>
-                                            189
-                                        </td>
-                                        <td class="d-flex justify-content-center align-items-center">
-                                           65,5%
+                                            <h6 class="content-text">
+                                                <i data-feather='check'></i>
+                                            </h6>
                                         </td>
                                         <td class="">
-                                           R$ 2.458,00
-                                        </td>
-                                    </tr>
-                                    <tr style="width:100%;">
-                                        <td>Conversão Boleto</td>
-                                        <td>
-                                            67
-                                        </td>
-                                        <td class="d-flex justify-content-center align-items-center">
-                                           25,5%
+                                            <h6 class="content-text">
+                                                JP
+                                            </h6>
                                         </td>
                                         <td class="">
-                                           R$ 1.000,00
+                                            <h6 class="content-text">
+                                                Corporação Milionário
+                                            </h6>
+                                        </td>
+                                        <td class="">
+                                            <h6 class="content-text">
+                                                Dirceu Gadelha
+                                            </h6>
                                         </td>
                                     </tr>
                                 </tbody>
