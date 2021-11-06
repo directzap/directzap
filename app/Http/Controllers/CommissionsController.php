@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\AreaChart;
+use App\Charts\LineChart;
+use App\Charts\DonutChart;
+use App\Charts\SalesChart;
 use Illuminate\Http\Request;
 
 class CommissionsController extends Controller
@@ -11,9 +15,14 @@ class CommissionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SalesChart $chart, DonutChart $chart2, LineChart $chart3, AreaChart $chart4)
     {
-        return view('pages.commissions.index');
+        return view('pages.commissions.index',  [
+            'chart' => $chart->build(),
+            'chart2' => $chart2->build(),
+            'chart3' => $chart3->build(),
+            'chart4' => $chart4->build()
+        ]);
     }
 
     /**

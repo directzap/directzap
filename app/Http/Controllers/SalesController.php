@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\SalesChart;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
@@ -11,9 +12,9 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SalesChart $pie_chart)
     {
-        return view('pages.sales.index');
+        return view('pages.sales.index',  ['chart' => $pie_chart->build()]);
     }
 
     /**

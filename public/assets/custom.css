@@ -372,8 +372,92 @@ tbody {
     width: 1.3rem !important;
 
 }
+/* Charts*/
+.apexcharts-pie{
+    transform: translateX(100px) scale(.46) !important;
+}
+.apexcharts-canvas, .container-chart, foreignObject{
+  /*  width: 560px !important; */
+    height: 282.7px !important;
 
+}
+.apexcharts-legend.apx-legend-position-right{
+    justify-content: center !important;
+}
+ .line-chart{
+    height: 520.7px !important;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 15px;
+}
 
+text{
+    fill: rgb(255, 255, 255) !important;
+    transform: translateX(22%);
+    font-size: 18px;
+}
+tspan{
+    font-size: 12px;
+}
+.line-chart text{
+    fill: rgb(255, 255, 255) !important;
+    transform: translateX(0%);
+    font-size: 18px;
+}
+.content-sales .col-color, .container-chart{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+}
+.apexcharts-legend{
+    top: 50% !important;
+    right: 10% !important;
+    transform: translateY(-65%) !important;
+}
+.apexcharts-inner {
+    transform: translate(20%, 5%) !important;
+}
+.container-chart .apexcharts-title-text{
+    transform: translateX(39%) !important;
+}
+.content-sales thead tr {
+    height: 50px;
+}
+.content-sales .title-table{
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+ .content-sales .content-text{
+     font-size: 12px;
+ }
+ .content-sales table.dataTable td, table.dataTable th {
+     padding: 0.4rem .5rem !important;
+ }
+@media (max-width:1500px) {
+    .apexcharts-canvas, .container-chart{
+        /*  width: 560px !important; */
+        height: 232.7px !important;
+    }
+    .line-chart{
+       height: 520.7px !important;
+    }
+    .apexcharts-pie{
+        transform: translateX(100px) scale(.66) !important;
+    }
+    .vertical-layout.vertical-menu-modern.menu-collapsed .apexcharts-pie{
+        transform: translateX(100px) scale(.5) !important;
+    }
+    .apexcharts-legend{
+        right: 10px !important;
+    }
+}
+@media (max-width:700px) {
+    .apexcharts-pie{
+        transform: translateX(0px) scale(1) !important;
+    }
+}
 @media (max-width:600px) {
     thead {
         display: none;

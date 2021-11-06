@@ -10,7 +10,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row mb-2">
+            <div class="content-header row ">
             </div>
             <div class="content-body">
                 <section class="" id="background-flutuante">
