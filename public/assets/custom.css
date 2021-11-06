@@ -383,6 +383,7 @@ tbody {
 }
 .apexcharts-legend.apx-legend-position-right{
     justify-content: center !important;
+    align-items: flex-start !important;
 }
  .line-chart{
     height: 520.7px !important;
@@ -412,10 +413,10 @@ tspan{
 .apexcharts-legend{
     top: 50% !important;
     right: 10% !important;
-    transform: translateY(-65%) !important;
+    transform: translateY(-55%) !important;
 }
 .apexcharts-inner {
-    transform: translate(20%, 5%) !important;
+    transform: translate(20%, 7%) !important;
 }
 .container-chart .apexcharts-title-text{
     transform: translateX(39%) !important;
@@ -440,6 +441,9 @@ tspan{
         /*  width: 560px !important; */
         height: 232.7px !important;
     }
+    .apexcharts-inner {
+        transform: translate(20%, 5%) !important;
+    }
     .line-chart{
        height: 520.7px !important;
     }
@@ -451,11 +455,57 @@ tspan{
     }
     .apexcharts-legend{
         right: 10px !important;
+        transform: translateY(-72%) !important;
+    }
+    .apexcharts-inner {
+        transform: translate(7%, 9%) !important;
+    }
+    .container-chart .apexcharts-title-text {
+        transform: translateX(28%) !important;
     }
 }
 @media (max-width:700px) {
-    .apexcharts-pie{
-        transform: translateX(0px) scale(1) !important;
+    .apexcharts-pie {
+        transform: translateX(0px) scale(3.5) !important;
+    }
+    .col-color:first-child{
+       /* margin-bottom: 20px; */
+    }
+    .col-color{
+        padding: 10px 5px !important;
+        border-radius: 10px;
+    }
+    .col-color label{
+        font-size: 8px;
+    }
+    .col-color h4{
+        font-size: 12px;
+    }
+    .container-chart .apexcharts-title-text {
+        transform: translateX(15%) !important;
+    }
+    .apexcharts-inner {
+        transform: translate(27%, 6%) !important;
+    }
+    .apexcharts-svg{
+        height: 100%;
+    }
+    .line-chart .apexcharts-svg{
+        height: 500px;
+    }
+    .apexcharts-legend.apx-legend-position-right{
+        justify-content: flex-end !important;
+    }
+    .apexcharts-legend {
+        right: 0% !important;
+        transform: translateY(-1%) !important;
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100%;
+
+    }
+    .line-chart tspan {
+        font-size: 9px;
     }
 }
 @media (max-width:600px) {

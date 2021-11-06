@@ -2,26 +2,26 @@
 @section('content')
 <div class="content-sales">
     <div class="row ">
-        <div class="col-md-6  text-center">
+        <div class="col-6  text-center">
             <div class="col-color">
                 <label for="">Comissões/ Valor Liquido</label>
                 <h4>R$ 3.768,28</h4>
             </div>
         </div>
-        <div class="col-md-6  text-center">
+        <div class="col-6  text-center">
             <div class="col-color">
                 <label for="">Menssagens Enviadas</label>
                 <h4>7.9k</h4>
             </div>
         </div>
     </div>
-    <div class="row mt-2">
-        <div class="col-md-6  text-center">
+    <div class="row ">
+        <div class="col-md-6 mt-2 text-center">
             <div class="container-chart">
                 {!! $chart->container() !!}
             </div>
         </div>
-        <div class="col-md-6  text-center">
+        <div class="col-md-6 mt-2 text-center">
             <div class="container-chart">
                 {!! $chart2->container() !!}
             </div>

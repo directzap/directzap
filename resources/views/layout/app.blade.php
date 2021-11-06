@@ -24,7 +24,7 @@
         </div>
     </div>
     @include('includes.app.modais');
-    @yield('js')
+
     @include('includes.app.scripts');
 </body>
 </html>
