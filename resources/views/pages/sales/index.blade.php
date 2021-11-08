@@ -70,25 +70,26 @@
                                     </tr>
                                 </thead>
                                 <tbody id="body_table_colabs">
+                                    @foreach ($sales as $sale)
                                     <tr style="width:100%;">
                                         <td>
                                             <h6 class="content-text">
-                                               27/10/2021 18:21
+                                               {{ getDateComplete($sale['trans_createdate']) }}
                                             </h6>
                                         </td>
                                         <td>
                                             <h6 class="content-text">
-                                               cart
+                                               {{ $sale['postback_type'] }}
                                             </h6>
                                         </td>
                                         <td class="d-flex justify-content-center align-items-center">
                                             <h6 class="content-text">
-                                                <i data-feather='circle'></i>
+                                                {{ $sale['trans_status'] }}
                                             </h6>
                                         </td>
                                         <td class="">
                                             <h6 class="content-text">
-                                                <i data-feather='check'></i>
+                                                {{ $sale['plan_name'] }}
                                             </h6>
                                         </td>
                                         <td class="">
@@ -98,15 +99,16 @@
                                         </td>
                                         <td class="">
                                             <h6 class="content-text">
-                                                Corporação Milionário
+                                               {{ $sale['product_name'] }}
                                             </h6>
                                         </td>
                                         <td class="">
                                             <h6 class="content-text">
-                                                Dirceu Gadelha
+                                                {{ $sale['client_name'] }}
                                             </h6>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

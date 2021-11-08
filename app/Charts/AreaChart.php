@@ -18,7 +18,6 @@ class AreaChart
         return $this->chart->areaChart()
             ->setTitle('Comissões / Valor Liquido')
             ->setSubtitle('')
-
             ->addData('Digital sales', [0, 9, 77, 2, 5, 5])
             ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
     }

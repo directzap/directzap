@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Charts\SalesChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SalesController extends Controller
 {
@@ -14,7 +15,17 @@ class SalesController extends Controller
      */
     public function index(SalesChart $pie_chart)
     {
-        return view('pages.sales.index',  ['chart' => $pie_chart->build()]);
+        $token = auth()->user()->token_braip;
+        $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
+            'date_min' => '2021-10-10 10:00:00',
+            'date_max' => date('Y-m-d H:i:s'),
+        ]);
+        $sales = $response->json()['data'];
+        // dd($sales[0]);
+        return view('pages.sales.index',  [
+            'chart' => $pie_chart->build(),
+            'sales' => $sales
+        ]);
     }
 
     /**

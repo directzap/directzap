@@ -62,7 +62,7 @@
                                         </div>
                                     </td>
                                     <td class="d-flex justify-content-center align-items-center">
-                                        <h5 class="mr-1">{{ $collaborator->count }}</h5>
+                                        <h5 class="mr-1" id="count{{ $collaborator->id }}">{{ $collaborator->count }}</h5>
                                         <button class="ml-1 btn btn-outline-warning rounded-circle btn-icon"
                                             data-toggle="tooltip" data-placement="top" title=""
                                             data-original-title="Resetar Clicks" data-id="" onclick="resetClick({{ $collaborator->id }})">
@@ -130,7 +130,7 @@
                 },
                 url: 'resetClick/' + id,
                 success: function(response) {
-                    location.reload();
+                    $('#count' + id).html('0');
                 }
             });
         }
