@@ -20,7 +20,7 @@ class CommissionsController extends Controller
     {
         $token = auth()->user()->token_braip;
         $response = Http::withToken($token)->post('https://ev.braip.com/webhook',  [
-            'basic_authentication' => 'df351daaec0b5f2dc849f240f8fdbda3f608dcce',
+            'basic_authentication' => '755917c71f99b9e2c2ff5cd4ff9de1f7ebf6d1e6',
             'type' => 'STATUS_ALTERADO',
         ]);
 
