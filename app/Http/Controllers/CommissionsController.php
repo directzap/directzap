@@ -7,6 +7,7 @@ use App\Charts\LineChart;
 use App\Charts\DonutChart;
 use App\Charts\SalesChart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class CommissionsController extends Controller
 {
@@ -17,6 +18,14 @@ class CommissionsController extends Controller
      */
     public function index(SalesChart $chart, DonutChart $chart2, LineChart $chart3, AreaChart $chart4)
     {
+        $token = auth()->user()->token_braip;
+        $response = Http::withToken($token)->post('https://ev.braip.com/webhook',  [
+            'basic_authentication' => 'df351daaec0b5f2dc849f240f8fdbda3f608dcce',
+            'type' => 'STATUS_ALTERADO',
+        ]);
+
+        dd($response);
+
         return view('pages.commissions.index',  [
             'chart' => $chart->build(),
             'chart2' => $chart2->build(),
