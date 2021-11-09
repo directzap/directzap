@@ -16,15 +16,14 @@ class CommissionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SalesChart $chart, DonutChart $chart2, LineChart $chart3, AreaChart $chart4)
+    public function index(SalesChart $chart, DonutChart $chart2, LineChart $chart3, AreaChart $chart4, Request $request)
     {
-        $token = auth()->user()->token_braip;
-        $response = Http::withToken($token)->post('https://ev.braip.com/webhook',  [
-            'basic_authentication' => '755917c71f99b9e2c2ff5cd4ff9de1f7ebf6d1e6',
-            'type' => 'STATUS_ALTERADO',
-        ]);
+        // $token = auth()->user()->token_braip;
+        // $response = Http::get('https://ev.braip.com/webhook');
 
-        dd($response);
+        $chaveUnica = $request;
+
+        dd($chaveUnica);
 
         return view('pages.commissions.index',  [
             'chart' => $chart->build(),
@@ -98,5 +97,10 @@ class CommissionsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function postback(Request $request)
+    {
+        dd($request);
     }
 }
