@@ -6,6 +6,7 @@ use App\Charts\AreaChart;
 use App\Charts\LineChart;
 use App\Charts\DonutChart;
 use App\Charts\SalesChart;
+use App\Models\Postback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -101,6 +102,8 @@ class CommissionsController extends Controller
 
     public function postback(Request $request)
     {
-        dd($request);
+        Postback::Create([
+            'basic_authentication' => $request->basic_authentication,
+        ]);
     }
 }
