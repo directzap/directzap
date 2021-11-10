@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('commissions/postback', [CommissionsController::class, 'postback'])->name('comissions.postback');
+Route::post('commissions/postback', [CommissionsController::class, 'postback'])->name('comissions.postback');
