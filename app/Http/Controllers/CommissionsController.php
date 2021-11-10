@@ -103,7 +103,7 @@ class CommissionsController extends Controller
     public function postback(Request $request)
     {
         Postback::Create([
-            'basic_authentication' => $request->basic_authentication,
+            'basic_authentication' => 'chegou',
         ]);
     }
 }
