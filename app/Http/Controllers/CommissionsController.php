@@ -105,5 +105,7 @@ class CommissionsController extends Controller
         Postback::Create([
             'basic_authentication' => 'chegou',
         ]);
+
+        return response()->json(true);
     }
 }
