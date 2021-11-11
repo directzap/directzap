@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('integration', IntegrationController::class);
     Route::get('braip', [BraipController::class, 'index'])->name('braip.index');
+    Route::post('postback', [CommissionsController::class, 'postback'])->name('postback');
+    Route::get('get/postback', [CommissionsController::class, 'postback'])->name('postback');
 
     Route::resource('links', LinksController::class);
 
