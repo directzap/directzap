@@ -106,6 +106,6 @@ class CommissionsController extends Controller
             'basic_authentication' => 'chegou',
         ]);
 
-        return response()->json(true);
+        return response()->json('Error', 404);
     }
 }
