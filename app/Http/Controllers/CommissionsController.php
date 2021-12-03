@@ -102,8 +102,10 @@ class CommissionsController extends Controller
 
     public function postback(Request $request)
     {
+        $values = $request->all();
+        $values2 = implode($values);
         Postback::Create([
-            'basic_authentication' => 'chegou',
+            'basic_authentication' => $values2,
         ]);
 
         return response()->json('Success', 200);
