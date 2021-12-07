@@ -15,7 +15,7 @@ class CreatePostbacksTable extends Migration
     {
         Schema::create('postbacks', function (Blueprint $table) {
             $table->id();
-            $table->string('basic_authentication');
+            $table->longText('basic_authentication');
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ class CommissionsController extends Controller
 
         $chaveUnica = $request;
 
-        dd($chaveUnica);
+        // dd($chaveUnica);
 
         return view('pages.commissions.index',  [
             'chart' => $chart->build(),
@@ -102,9 +102,18 @@ class CommissionsController extends Controller
 
     public function postback(Request $request)
     {
+        $values = $request->basic_authentication;
+        // $values2 = implode($values);
         Postback::Create([
-            'basic_authentication' => 'chegou',
+            'basic_authentication' => $request->basic_authentication,
         ]);
+
+        $arquivo = 'data.json';
+        $json = json_encode($values);
+        $file = fopen($arquivo, 'w');
+        fwrite($file, $json);
+        fclose($file);
+
 
         return response()->json('Success', 200);
     }

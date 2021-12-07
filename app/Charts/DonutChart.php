@@ -15,6 +15,8 @@ class DonutChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
+
+
         return $this->chart->donutChart()
             ->setTitle('Conversão de Pix')
             ->setSubtitle('')
