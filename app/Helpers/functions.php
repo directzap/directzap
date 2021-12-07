@@ -10,6 +10,9 @@ function getDateComplete($date)
 function getBoletoType()
 {
     $token = auth()->user()->token_braip;
+    if ($token == null) {
+        return false;
+    }
     $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
         'date_min' => '2021-10-10 10:00:00',
         'date_max' => date('Y-m-d H:i:s'),
