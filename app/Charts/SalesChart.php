@@ -18,11 +18,13 @@ class SalesChart
     {
 
         $token = auth()->user()->token_braip;
-        if ($token == null) {
+        if (!$token) {
             return false;
         }
+        $date_min = date('Y-m-d H:i:s', strtotime('-30 days', strtotime(date('Y-m-d H:i:s'))));
+
         $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
-            'date_min' => '2021-10-10 10:00:00',
+            'date_min' => $date_min,
             'date_max' => date('Y-m-d H:i:s'),
             'payment'  => [1],
         ]);
