@@ -21,13 +21,13 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
 
-            <a class=" btn btn-primary btn-block btn-sidebar" href="{{ route('dashboard.index') }}">
+            <a class="{{ Route::currentRouteNamed('dashboard.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('dashboard.index') }}">
                 <!--<i class="icon-sidebar fas fa-tachometer-alt"></i>-->
                 <i class="icon-sidebar" data-feather='airplay'></i>
                 <span class="name-sidebar">Dashboard</span>
 
             </a>
-            <a class="btn btn-primary btn-block btn-sidebar" href="{{ route('colaboradores.index') }}">
+            <a class="{{ Route::currentRouteNamed('colaboradores.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('colaboradores.index') }}">
                 <!-- <i class="icon-sidebar fas fa-users"></i>-->
                 <i class="icon-sidebar" data-feather='users'></i>
                 <span class="name-sidebar">Colaboradores</span>
@@ -37,7 +37,7 @@
             <li class=" has-sub ">
                 <button class="btn btn-primary btn-block btn-sidebar d-flex align-items-center" href="#">
                     <!--<i class="icon-sidebar fas fa-link"></i>-->
-                    <i class="icon-sidebar" data-feather='link'></i>
+                    <i class="icon-sidebar" data-feather='settings'></i>
                     <span class="name-sidebar menu-title text-truncate" data-i18n="Menu Levels">Gerenciar Pixel</span>
                 </button>
                 <ul class="menu-content">
@@ -45,7 +45,7 @@
                         <button type="button" class="btn btn-primary btn-block btn-sidebar" data-toggle="modal"
                             data-target="#PixelModal" onclick="showAddPixel()">
                             <!--<i class="icon-sidebar far fa-plus-square"></i>-->
-                            <i class="icon-sidebar" data-feather='plus-square'></i>
+                            <i class="icon-sidebar" data-feather='facebook'></i>
                             <span class="name-sidebar">Pixel Facebook</span>
                         </button>
                     </li>
@@ -68,18 +68,18 @@
                     </li>
                 </ul>
             </li>
-            <a class=" btn btn-primary btn-block btn-sidebar" href="{{ route('sales.index') }}">
+            <a class="{{ Route::currentRouteNamed('sales.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('sales.index') }}">
                 <!--<i class="icon-sidebar fas fa-shopping-cart"></i>-->
                 <i class="icon-sidebar" data-feather='shopping-bag'></i>
                 <span class="name-sidebar">Vendas</span>
 
             </a>
-            <a class="btn btn-primary btn-block btn-sidebar" href="{{ route('commissions.index') }}">
+            <a class="{{ Route::currentRouteNamed('commissions.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('commissions.index') }}">
                 <i class="icon-sidebar fas fa-comments-dollar"></i>
                 <span class="name-sidebar">Comissões</span>
 
             </a>
-            <a class="btn btn-primary btn-block btn-sidebar" href="{{ route('links.index') }}">
+            <a class="{{ Route::currentRouteNamed('links.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('links.index') }}">
                 <i class="icon-sidebar" data-feather='link'></i>
                 <span class="name-sidebar">Links</span>
 
@@ -87,16 +87,16 @@
             <input style="opacity:0; position: absolute; " type="text" class="form-control" id="copy-to-clipboard-input" value="Link do precell">
             <button class="btn btn-primary btn-block btn-sidebar" id="btn-copy" data-toggle="modal"
             data-target="#copy_modal">
-                <i class="icon-sidebar" data-feather='link'></i>
+                <i class="icon-sidebar" data-feather='copy'></i>
                 <span class="name-sidebar">Copiar Link precell</span>
             </button>
-            <a class="btn btn-primary btn-block btn-sidebar" href="{{ route('links.index') }}">
-                <i class="icon-sidebar" data-feather='link'></i>
+            <a class="{{ Route::currentRouteNamed('dashboard.links') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('links.index') }}">
+                <i class="icon-sidebar" data-feather='upload-cloud'></i>
                 <span class="name-sidebar">Atualizações</span>
 
             </a>
-            <a href="{{ route('integration.index') }}" class="btn btn-primary btn-block btn-sidebar ">
-                <i class="icon-sidebar fas fa-user-cog"></i>
+            <a href="{{ route('integration.index') }}" class="{{ Route::currentRouteNamed('integration.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar ">
+                <i class="icon-sidebar" data-feather='link-2'></i>
                 <span class="name-sidebar">Integrações</span>
             </a>
             <!--<li class=" has-sub ">
@@ -129,7 +129,7 @@
                 </ul>
             </li>-->
             @if (auth()->user()->type == 'admin')
-                <a href="{{ route('admin.index') }}" class="btn btn-primary btn-block btn-sidebar adm-btn">
+                <a href="{{ route('admin.index') }}" class="{{ Route::currentRouteNamed('admin.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar adm-btn">
                     <i class="icon-sidebar fas fa-user-cog"></i>
                     <span class="name-sidebar">Área Administrativa</span>
                 </a>

@@ -2,34 +2,44 @@
 @section('content')
 <div class="content-sales">
     <div class="row ">
-        <div class="col-6  text-center">
+        <div class="col-12  text-center">
             <div class="col-color">
                 <label for="">Comissões/ Valor Liquido</label>
                 <h4>R$ 3.768,28</h4>
             </div>
         </div>
-        <div class="col-6  text-center">
-            <div class="col-color">
-                <label for="">Menssagens Enviadas</label>
-                <h4>7.9k</h4>
-            </div>
-        </div>
     </div>
     <div class="row ">
         <div class="col-md-6 mt-2 text-center">
-            <div class="container-chart">
-                {!! $chart->container() !!}
+            <div class="card">
+                <div class="card-header flex-column align-items-start">
+                    <h4 class="card-title mb-75">Expense Ratio</h4>
+                    <span class="card-subtitle text-muted">Spending on various categories </span>
+                </div>
+                <div class="card-body" style="position: relative;">
+                    {!! $chart->container() !!}
+                <div class="resize-triggers"><div class="expand-trigger"><div style="width: 505px; height: 340px;"></div></div><div class="contract-trigger"></div></div></div>
             </div>
+           <!-- <div class="container-chart chart-boletos">
+
+            </div>-->
         </div>
         <div class="col-md-6 mt-2 text-center">
-            <div class="container-chart">
-                {!! $chart2->container() !!}
+            <div class="card">
+                <div class="card-header flex-column align-items-start">
+                    <h4 class="card-title mb-75">Teste 2 Ratio</h4>
+                    <span class="card-subtitle text-muted">Spending on various categories </span>
+                </div>
+                <div class="card-body">
+                    {!! $chart2->container() !!}
+                </div>
             </div>
+
         </div>
     </div>
     <div class="row mt-3">
         <div class="col-md-7 ">
-            <section id="multilingual-datatable">
+            <section id="conversion_datatable">
                 <div class="row">
                     <div class="col-md-12">
                         <h4 class="text-center">Estatisticas de Conversão</h4>
@@ -56,7 +66,7 @@
                                     </div>
                                 </div>
                             @endif
-                            <table id="colabs-table">
+                            <table id="conversion_table">
                                 <thead>
                                     <tr>
                                         <th>
@@ -157,6 +167,7 @@
             </section>
         </div>
         <div class="col-md-5">
+            <!--
             <section id="multilingual-datatable" style="margin-top: 58px;">
                 <div class="row">
                     <div class="col-md-12">
@@ -247,6 +258,10 @@
                     </div>
                 </div>
             </section>
+            -->
+            <div class="container-chart">
+                {!! $chart2->container() !!}
+            </div>
         </div>
     </div>
     <div class="row">

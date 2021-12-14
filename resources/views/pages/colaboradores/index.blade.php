@@ -45,24 +45,48 @@
                     <table id="colabs-table">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Links</th>
-                                <th>Qnt de Clicks</th>
-                                <th>Opções</th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Nome
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Links
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Qnt de Clicks
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Opções
+                                    </h4>
+                                </th>
                             </tr>
                         </thead>
                         <tbody id="body_table_colabs">
                             @foreach ($collaborators as $collaborator)
                                 <tr style="width:100%;">
-                                    <td>{{ $collaborator->name ?? '' }}</td>
                                     <td>
-                                        <div class="links-column">
-                                            {{ $collaborator->phone ?? 'sem email' }} <br>
-                                            {{ $collaborator->phone ?? 'sem email' }}
-                                        </div>
+                                        <h6 class="content-text">
+                                            {{ $collaborator->name ?? '' }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="content-text links-column">
+                                        <!--<div class="links-column">-->
+                                            <span>{{ $collaborator->phone ?? 'sem email' }}</span>
+                                            <span>{{ $collaborator->phone ?? 'sem email' }}</span>
+
+                                        </h6>
                                     </td>
                                     <td class="d-flex justify-content-center align-items-center">
-                                        <h5 class="mr-1" id="count{{ $collaborator->id }}">{{ $collaborator->count }}</h5>
+                                        <h6 class="content-text mr-1" id="count{{ $collaborator->id }}">
+                                            {{ $collaborator->count }}
+                                        </h6>
                                         <button class="ml-1 btn btn-outline-warning rounded-circle btn-icon"
                                             data-toggle="tooltip" data-placement="top" title=""
                                             data-original-title="Resetar Clicks" data-id="" onclick="resetClick({{ $collaborator->id }})">

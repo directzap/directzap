@@ -18,6 +18,9 @@ Button active bg #5e50ee
 a:hover {
     color: #00c6d4;
 }
+img{
+    width: 100%;
+}
 
 .navbar-header {
     border-bottom: 1px solid #03666d;
@@ -372,12 +375,12 @@ tbody {
     width: 1.3rem !important;
 
 }
-/* Charts*/
+/* Charts*
 .apexcharts-pie{
     transform: translateX(100px) scale(.46) !important;
 }
 .apexcharts-canvas, .container-chart, foreignObject{
-  /*  width: 560px !important; */
+  /*  width: 560px !important; *
     height: 282.7px !important;
 
 }
@@ -421,25 +424,111 @@ tspan{
 .container-chart .apexcharts-title-text{
     transform: translateX(39%) !important;
 }
-.content-sales thead tr {
+.chart-boletos .apexcharts-inner {
+    transform: translate(-4%, 13%) !important;
+}
+.chart-boletos  .apexcharts-legend {
+    display: flex;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    height: 95%;
+   /* flex-wrap: wrap;
+    width: 325px;*
+}
+.chart-boletos .apexcharts-legend-series{
+    margin: 0 5px !important;
+}
+.chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
+    font-size: 10px !important;
+} */
+table thead tr {
     height: 50px;
 }
-.content-sales .title-table{
+table .title-table{
     font-size: 14px;
-    text-transform: none;
+    text-transform: initial !important;
     font-weight: 700;
     letter-spacing: 1.2px;
+    color: #fff;
 }
- .content-sales .content-text{
-     font-size: 12px;
- }
- .content-sales table.dataTable td, table.dataTable th {
-     padding: 0.4rem .5rem !important;
- }
+table .content-text{
+    font-size: 12px !important;
+    line-height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ececec;
+
+}
+table .content-text.links-column{
+
+}
+table.dataTable td, table.dataTable th {
+    padding: 0.4rem .5rem !important;
+}
+#sales-datatable tbody td{
+
+}
+.status-legend{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.status-legend .title-legend{
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: auto;
+}
+.status-legend .content-status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+}
+.status-legend .text-legend{
+    font-size: 10px;
+}
+.status-legend .icon-legend{
+    font-size: 6px;
+    margin-right: 2px;
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+    border-radius: 50% !important;
+}
+#sales-datatable .last-td{
+    width: 110px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+table.dataTable thead .sorting:after{
+   /* background: url( {{ asset('assets/images/svg/chevron-down.svg') }} ) !important;*/
+}
+table.dataTable thead .sorting:before{
+
+}
+#add_colab_link_datatable .qnt-link-th{
+    width: 30% !important;
+}
+#add_colab_link_datatable .name-colab-th{
+    width: 25% !important;
+}
+
+.content-sales .card{
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* integration */
+.logo-integration{
+    max-width: 180px;
+}
+/*
 @media (max-width:1500px) {
     .apexcharts-canvas, .container-chart{
-        /*  width: 560px !important; */
-        height: 232.7px !important;
+        /*  width: 560px !important; *
+        height: 250px !important;
     }
     .apexcharts-inner {
         transform: translate(20%, 5%) !important;
@@ -455,7 +544,7 @@ tspan{
     }
     .apexcharts-legend{
         right: 10px !important;
-        transform: translateY(-72%) !important;
+        transform: translateY(-59%) !important;
     }
     .apexcharts-inner {
         transform: translate(7%, 9%) !important;
@@ -463,7 +552,7 @@ tspan{
     .container-chart .apexcharts-title-text {
         transform: translateX(28%) !important;
     }
-}
+}*/
 @media (max-width:700px) {
     .apexcharts-pie {
         transform: translateX(0px) scale(3.5) !important;

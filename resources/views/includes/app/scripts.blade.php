@@ -100,7 +100,7 @@
                     "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
                 }
             });
-            $('#admin-table').DataTable({
+            $('#admin_table').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
                 }
@@ -110,18 +110,23 @@
                     "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
                 }
             });
+            $('table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
+                }
+            });
         });
     </script>
 
     <script>
-        const check = document.querySelector('.btn-sidebar')
+       /* const check = document.querySelector('.btn-sidebar')
             $('.btn-sidebar').on('click', function() {
                 $(this).addClass('active');
                 console.log('Ativou');
             });
 
         const btnsPage = document.querySelectorAll('.btn-page')
-
+            */
     </script>
 
     <!-- Icones Feather -->
@@ -218,7 +223,8 @@
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="{{ asset('assets/vendors/js/charts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/vendors/js/charts/apexcharts.js') }}"></script>
+<script src="{{ asset('assets/js/scripts/charts/chart-apex.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Theme JS-->

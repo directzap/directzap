@@ -70,7 +70,9 @@ class SalesChart
             }
         }
 
+
         $set_labels = ['Aguardando Pagamento', 'Pagamento Aprovado', 'Cancelada', 'Chargeback', 'Devolvida', 'Em Análise', 'Estorno Pendente', 'Em Processamento', 'Parcialmente Pago', 'Pagamento Atrasado'];
+     //  $set_labels = ['Teste 1', 'Teste 2'];
         $set_values = [$aguardando_pagamento, $pagamento_aprovado, $cancelada, $chargeback, $devolvida, $em_analise, $estorno_pendente, $em_processamento, $parcialmente_pago, $pagamento_atrasado];
         return $this->chart->pieChart()
             ->setTitle('Conversões de boleto')
