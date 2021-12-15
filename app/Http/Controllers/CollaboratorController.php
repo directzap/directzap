@@ -104,16 +104,15 @@ class CollaboratorController extends Controller
      */
     public function destroy($id)
     {
-        $colaborattor = Configuration::where('user_id', $id)->first();
-        $colaborattor->delete();
+        $collaborator = Collaborator::find($id);
+        $collaborator->delete();
 
-        $user = Configuration::where('user_id', auth()->user()->id)->first();
-        $count_collaborators = $user->collaborators - 1;
-        $user->fill([
-            'collaborators'  => $count_collaborators,
-        ]);
-
-        $user->save();
+        // $user = Configuration::where('user_id', auth()->user()->id)->first();
+        // $count_collaborators = $user->collaborators - 1;
+        // $user->fill([
+        //     'collaborators'  => $count_collaborators,
+        // ]);
+        // $user->save();
         return response()->json(true);
     }
 
@@ -129,6 +128,23 @@ class CollaboratorController extends Controller
         );
 
         return redirect()->back();
+    }
+
+    public function pausePlay($id)
+    {
+        $collaborator = Collaborator::find($id);
+        if ($collaborator->active == 1) {
+            $active = 0;
+        } else {
+            $active = 1;
+        }
+
+        $collaborator->fill([
+            'active' => $active
+        ]);
+        $collaborator->save();
+
+        return response()->json($active);
     }
 
     public function resetClick($id)

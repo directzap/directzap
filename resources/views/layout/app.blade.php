@@ -26,5 +26,6 @@
     @include('includes.app.modais');
 
     @include('includes.app.scripts');
+    @yield('js')
 </body>
 </html>
