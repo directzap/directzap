@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="loading dark-layout" lang="pt-br" data-layout="dark-layout" data-textdirection="ltr">
 @include('includes.app.head')
+
 <body class="vertical-layout vertical-menu-modern navbar-floating footer-static  " data-open="click"
     data-menu="vertical-menu-modern" data-col="blank-page">
     @include('includes.app.nav')
@@ -26,6 +27,37 @@
     @include('includes.app.modais');
 
     @include('includes.app.scripts');
+    <script>
+        function salvarPixelFacebook() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    "pixel_facebook": $('#pixel_facebook').val(),
+                },
+                url: 'pixel-facebook/',
+                success: function(response) {
+                    $('#mensagem-facebook').html('<div class="alert alert-primary" role="alert">Salvo com sucesso</div>')
+                }
+            });
+        }
+        function salvarPixelGtm() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    "pixel_gtm": $('#code').val(),
+                },
+                url: 'pixel-gtm/',
+                success: function(response) {
+                    $('#mensagem-gtm').html('<div class="alert alert-primary" role="alert">Salvo com sucesso</div>')
+                }
+            });
+        }
+    </script>
     @yield('js')
 </body>
+
 </html>

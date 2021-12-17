@@ -16,5 +16,7 @@ class Configuration extends Model
         'max_collaborator',
         'collaborators',
         'user_id',
+        'pixel_gtm',
+        'pixel_facebook'
     ];
 }

@@ -62,18 +62,19 @@
              </div>
 
              <div class="modal-body">
+                 <div id="mensagem-facebook"></div>
                  <form method="post" action="">
                      @csrf
 
                      <div class="form-group">
                          <p class="p-1">Insira abaixo seu Pixel</p>
 
-                         <input type="number" class="form-control" id="pixel" name="pixel"
-                             placeholder="Ex: 1282707308773467" required>
+                         <input type="number" class="form-control" id="pixel_facebook" name="pixel_facebook"
+                             placeholder="Ex: 1282707308773467" value="{{ auth()->user()->pixel_facebook }}" required>
                      </div>
 
                      <div class="modal-footer">
-                         <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                         <button type="button" onclick="salvarPixelFacebook()" class="btn btn-primary btn-block">Salvar</button>
                      </div>
                  </form>
              </div>
@@ -154,6 +155,7 @@
              </div>
 
              <div class="modal-body">
+                <div id="mensagem-gtm"></div>
                  <form method="POST" action="">
                      @csrf
 
@@ -163,13 +165,13 @@
                                  onclick="makeCod()">Gerar Código</button>
                          </div>
                      </div>
-                     <input type="text" class="form-control" id="code" name="code" value="" placeholder="Ex: dr89f"
+                     <input type="text" class="form-control" id="code" name="code" value="{{ auth()->user()->pixel_gtm }}" placeholder="Ex: dr89f"
                          minlength="1">
 
 
 
                      <div class="modal-footer">
-                         <button type="submit" class="btn btn-primary btn-block">
+                         <button type="button" onclick="salvarPixelGtm()" class="btn btn-primary btn-block">
                              Salvar
                          </button>
                      </div>
@@ -593,10 +595,8 @@
             </div>
 
             <div class="modal-body">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('links.store') }}">
                     @csrf
-
-
                     <div class="form-group">
                         <label for="title_alert">Nome do link: </label>
                         <input type="text" class="form-control" id="link_name" name="link_name"
@@ -607,12 +607,12 @@
                     <div class="form-group ">
                         <div class="demo-inline-spacing">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="com_precell" name="fooby[1][]">
+                                <input type="radio" class="custom-control-input" id="com_precell" name="precell" value="1">
                                 <label class="custom-control-label" for="com_precell">Com Precell</label>
 
                             </div>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="sem_precell" name="fooby[1][]">
+                                <input type="radio" class="custom-control-input" id="sem_precell" name="precell" value="0">
                                 <label class="custom-control-label" for="sem_precell">Sem Precell</label>
                             </div>
 
@@ -620,11 +620,11 @@
                                 <h4 class="mt-3">Selecione o Dominio</h4>
                                 <div class="demo-inline-spacing mt-n1">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="directzap_dominio"  name="fooby[2][]">
+                                        <input type="radio" class="custom-control-input" id="directzap_dominio"  name="dominio" value="direct">
                                         <label class="custom-control-label" for="directzap_dominio">directzap.com</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="zapdownloader_dominio"  name="fooby[2][]">
+                                        <input type="radio" class="custom-control-input" id="zapdownloader_dominio"  name="dominio" value="zap">
                                         <label class="custom-control-label" for="zapdownloader_dominio">zapdownloader.com</label>
                                     </div>
                                 </div>
@@ -641,151 +641,6 @@
     </div>
 </div>
 
- <div class="modal fade" id="add_colab_link" tabindex="-1" aria-labelledby="links" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="configModal">Adicionar Colaborador ao link</h5>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-               <div id="add_colab_link_section">
-                    <div class="row my-2">
-                        <div class="col-md-12">
-                            <h4>Selecione o(s) colaborador(es) para este link</h4>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-12 no-padding-mobile">
-                            <div class="card">
-                                <table id="add_colab_link_datatable">
-                                    <thead>
-                                        <tr>
-                                            <th class="name-colab-th">
-                                                <h4 class="title-table">
-                                                    Colaboradores
-                                                </h4>
-                                            </th>
-                                            <th class="qnt-link-th">
-                                                <h4 class="title-table">
-                                                  Qnt Links Cadastrados
-                                                </h4>
-                                            </th>
-                                            <th>
-                                                <h4 class="title-table">
-                                                    Links
-                                                </h4>
-                                            </th>
-                                        <!-- <th class="options" style="max-width: 180px !important">Opções</th>-->
-                                        </tr>
-                                    </thead>
-                                    <tbody id="add_colab_link_body">
-                                        <tr style="width:100%;">
-                                            <td class="">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
-                                                        <label class="custom-control-label content-text" for="customCheck1">Bruno</label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td >
-                                                <h6 class="content-text">
-                                                    2
-                                                </h6>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    <span> Bruno TikTok</span>
-                                                    <span>Faceads</span>
-                                                </h6>
-                                            </td>
-                                        </tr>
-                                        <tr style="width:100%;">
-                                            <td class="">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
-                                                        <label class="custom-control-label" for="customCheck1">Bruno</label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    2
-                                                </h6>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    <span> Bruno TikTok</span>
-                                                    <span>Faceads</span>
-                                                </h6>
-                                            </td>
-                                        </tr>
-                                        <tr style="width:100%;">
-                                            <td class="">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
-                                                        <label class="custom-control-label" for="customCheck1">Bruno</label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    2
-                                                </h6>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    <span> Bruno TikTok</span>
-                                                    <span>Faceads</span>
-                                                </h6>
-                                            </td>
-                                        </tr>
-                                        <tr style="width:100%;">
-                                            <td class="">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" >
-                                                        <label class="custom-control-label" for="customCheck1">Bruno</label>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    2
-                                                </h6>
-                                            </td>
-                                            <td>
-                                                <h6 class="content-text">
-                                                    <span> Bruno TikTok</span>
-                                                    <span>Faceads</span>
-                                                </h6>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary text-center w-25">Salvar</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
  <div class="modal fade" id="info_colab_link" tabindex="-1" aria-labelledby="links" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">

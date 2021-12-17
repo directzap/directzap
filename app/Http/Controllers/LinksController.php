@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collaborator;
+use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LinksController extends Controller
 {
@@ -13,7 +16,11 @@ class LinksController extends Controller
      */
     public function index()
     {
-        return view('pages.links.index');
+        $links = Link::where('user_id', auth()->user()->id)->get();
+
+        return view('pages.links.index', [
+            'links' => $links
+        ]);
     }
 
     /**
@@ -34,7 +41,14 @@ class LinksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $link = Link::create([
+            'name' => $request->link_name,
+            'precell' => $request->precell,
+            'dominio' => $request->dominio,
+            'user_id' => auth()->user()->id
+        ]);
+
+        return redirect()->back()->with('success', 'Cadastro realizado com sucesso!');
     }
 
     /**
@@ -79,6 +93,27 @@ class LinksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $link = Link::find($id);
+        $link->delete();
+
+        return response()->json(true);
+    }
+
+    public function showAddCollaborators($id)
+    {
+        $links = DB::table('collaborator_link')->where('link_id', $id)->get();
+        $remove_collaborators = [];
+        foreach ($links as $key => $link) {
+            $remove_collaborators[] = $link->collaborator_id;
+        }
+        $collaborators = Collaborator::where('users_id', auth()->user()->id)
+            ->whereNotIn('id', $remove_collaborators)
+            ->get();
+        return response()->json($collaborators);
+    }
+
+    public function addCollaborators(Request $request, $id)
+    {
+        # code...
     }
 }

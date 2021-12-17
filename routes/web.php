@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BraipController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\IntegrationController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\LinksController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('user', UserController::class);
     Route::post('updatePass/{id}', [UserController::class, 'updatatePass'])->name('user.updatePass');
+    Route::post('pixel-facebook', [UserController::class, 'pixelFacebook'])->name('user.pixelFacebook');
+    Route::post('pixel-gtm', [UserController::class, 'pixelGtm'])->name('user.pixelGtm');
 
     Route::resource('faq', FaqController::class);
 
@@ -63,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('braip', [BraipController::class, 'index'])->name('braip.index');
 
     Route::resource('links', LinksController::class);
+    Route::get('links/show-add-collaborators/{id}',[LinksController::class, 'showAddCollaborators'])->name('showAddCollaborators');
+    Route::put('links/add-collaborators/{id}',[LinksController::class, 'addCollaborators'])->name('addCollaborators');
 
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

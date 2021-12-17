@@ -23,6 +23,8 @@ class CreateConfigurationsTable extends Migration
             $table->integer('distribution')->default(10);
             $table->integer('max_collaborator')->default(8);
             $table->integer('collaborators')->default(0);
+            $table->string('pixel_gtm')->nullable();
+            $table->string('pixel_facebook')->nullable();
             $table->timestamps();
         });
     }

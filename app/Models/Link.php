@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Collaborator extends Model
+class Link extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'phone',
-        'message',
-        'count',
-        'active',
-        'users_id',
-        'qtd_link'
+        'precell',
+        'dominio',
+        'user_id',
+        'qtd_collaborators'
     ];
 }

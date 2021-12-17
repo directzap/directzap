@@ -17,6 +17,7 @@ class CreateCollaboratorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
+            $table->integer('qtd_link')->default(0);
             $table->longText('message');
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
             $table->integer('count')->default(0);

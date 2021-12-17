@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\Input;
 
 use Image;
+
 class UserController extends Controller
 {
     /**
@@ -120,6 +121,24 @@ class UserController extends Controller
         }
     }
 
+    public function pixelFacebook(Request $request)
+    {
+        $user = User::where('id', auth()->user()->id)->first();
+        $user->fill([
+            'pixel_facebook'  => $request->pixel_facebook
+        ]);
+        $user->save();
+        return response()->json(true);
+    }
+    public function pixelGtm(Request $request)
+    {
+        $user = User::where('id', auth()->user()->id)->first();
+        $user->fill([
+            'pixel_gtm'  => $request->pixel_gtm
+        ]);
+        $user->save();
+        return response()->json(true);
+    }
     /**
      * Remove the specified resource from storage.
      *
