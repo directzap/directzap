@@ -112,8 +112,39 @@ class LinksController extends Controller
         return response()->json($collaborators);
     }
 
-    public function addCollaborators(Request $request, $id)
+    public function addCollaborators(Request $request)
     {
-        # code...
+        $collaborators = $request->collaborator;
+        foreach ($collaborators as $key => $collaborator) {
+            DB::table('collaborator_link')->insert([
+                'link_id' => $request->link,
+                'collaborator_id' => $collaborator
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function collaboratorsLink($id)
+    {
+        $links = DB::table('collaborator_link')->where('link_id', $id)->get();
+        $list_collaborators = [];
+        foreach ($links as $key => $link) {
+            $list_collaborators[] = $link->collaborator_id;
+        }
+        $collaborators = Collaborator::where('users_id', auth()->user()->id)
+            ->whereIn('id', $list_collaborators)
+            ->get();
+        return response()->json($collaborators);
+    }
+
+    public function deleteCollaboratorLink(Request $request)
+    {
+        DB::table('collaborator_link')
+            ->where('link_id', $request->link_id)
+            ->where('collaborator_id', $request->collaborator_id)
+            ->delete();
+
+        return response()->json(true);
     }
 }

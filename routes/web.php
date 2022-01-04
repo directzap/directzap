@@ -67,7 +67,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('links', LinksController::class);
     Route::get('links/show-add-collaborators/{id}',[LinksController::class, 'showAddCollaborators'])->name('showAddCollaborators');
-    Route::put('links/add-collaborators/{id}',[LinksController::class, 'addCollaborators'])->name('addCollaborators');
+    Route::post('links/add-collaborators/',[LinksController::class, 'addCollaborators'])->name('addCollaborators');
+    Route::get('links/collaborators-link/{id}',[LinksController::class, 'collaboratorsLink'])->name('collaboratorsLink');
+    Route::post('links/delete-collaborator-link/',[LinksController::class, 'deleteCollaboratorLink'])->name('deleteCollaboratorLink');
 
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
