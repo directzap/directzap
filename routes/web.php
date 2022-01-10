@@ -16,6 +16,8 @@ use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\IntegrationController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\LinksController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\UpdatesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('commissions', CommissionsController::class);
 
     Route::resource('admin', AdminController::class);
+    Route::resource('updates', UpdatesController::class);
+    Route::resource('notifications', NotificationController::class);
 
     Route::resource('integration', IntegrationController::class);
     Route::get('braip', [BraipController::class, 'index'])->name('braip.index');

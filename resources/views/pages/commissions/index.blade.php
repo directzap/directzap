@@ -13,8 +13,8 @@
         <div class="col-md-6 mt-2 text-center">
             <div class="card">
                 <div class="card-header flex-column align-items-start">
-                    <h4 class="card-title mb-75">Expense Ratio</h4>
-                    <span class="card-subtitle text-muted">Spending on various categories </span>
+                    <h4 class="card-title mb-75">Conversões de Boleto</h4>
+                    <span class="card-subtitle text-muted"></span>
                 </div>
                 <div class="card-body" style="position: relative;">
                     {!! $chart->container() !!}
@@ -27,8 +27,8 @@
         <div class="col-md-6 mt-2 text-center">
             <div class="card">
                 <div class="card-header flex-column align-items-start">
-                    <h4 class="card-title mb-75">Teste 2 Ratio</h4>
-                    <span class="card-subtitle text-muted">Spending on various categories </span>
+                    <h4 class="card-title mb-75">Conversões de Pix</h4>
+                    <span class="card-subtitle text-muted"></span>
                 </div>
                 <div class="card-body">
                     {!! $chart2->container() !!}
@@ -259,8 +259,14 @@
                 </div>
             </section>
             -->
-            <div class="container-chart">
-                {!! $chart2->container() !!}
+            <div class="card">
+                <div class="card-header flex-column align-items-start">
+                    <h4 class="card-title mb-75">Conversões de Cartão</h4>
+                    <span class="card-subtitle text-muted"></span>
+                </div>
+                <div class="card-body">
+                    {!! $chart5->container() !!}
+                </div>
             </div>
         </div>
     </div>

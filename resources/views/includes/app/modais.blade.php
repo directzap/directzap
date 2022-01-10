@@ -1,4 +1,36 @@
  <!-- Modais -->
+ <div class="modal fade" id="modal_register_phone" tabindex="-1" aria-labelledby="modal_colaboradores"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="">Cadastre seu número de telefone (whatsapp)</h5>
+
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+
+             <div class="modal-body">
+
+                 <form method="POST" action="">
+                     @csrf
+                     <div class="form-group">
+                         <label for="phone">Telefone (whatsapp)</label>
+                         <input type="text" class="form-control" id="phone" name="phone" placeholder="ex: 21911112222"required>
+                     </div>
+
+                     <div class="modal-footer">
+                         <button type="submit" class="btn btn-primary btn-block">
+                            Cadastrar
+                         </button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+
  <div class="modal fade" id="modal_colaboradores" tabindex="-1" aria-labelledby="modal_colaboradores"
      aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered">
@@ -82,12 +114,12 @@
      </div>
  </div>
 
- <div class="modal fade" id="modal_colaboradores" tabindex="-1" aria-labelledby="modal_colaboradores"
+ <div class="modal fade" id="modal_edit_colaboradores" tabindex="-1" aria-labelledby="modal_colaboradores"
      aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="modal_colaboradores">Colaborador</h5>
+                 <h5 class="modal-title" id="modal_colaboradores">Editar Colaborador</h5>
 
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>

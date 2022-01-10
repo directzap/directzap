@@ -375,12 +375,12 @@ tbody {
     width: 1.3rem !important;
 
 }
-/* Charts*
+/* Charts*/
 .apexcharts-pie{
     transform: translateX(100px) scale(.46) !important;
 }
 .apexcharts-canvas, .container-chart, foreignObject{
-  /*  width: 560px !important; *
+  /*  width: 560px !important; */
     height: 282.7px !important;
 
 }
@@ -433,14 +433,15 @@ tspan{
     align-items: flex-start !important;
     height: 95%;
    /* flex-wrap: wrap;
-    width: 325px;*
+    width: 325px;*/
 }
 .chart-boletos .apexcharts-legend-series{
     margin: 0 5px !important;
 }
 .chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
     font-size: 10px !important;
-} */
+}
+/* End charts*/
 table thead tr {
     height: 50px;
 }
@@ -523,6 +524,11 @@ table.dataTable thead .sorting:before{
 /* integration */
 .logo-integration{
     max-width: 180px;
+}
+.box-update-status{
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
 }
 /*
 @media (max-width:1500px) {

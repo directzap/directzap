@@ -122,9 +122,10 @@
                                             <!--</div>-->
                                             <!-- <div class="col-md-4 col-flex">-->
                                             <button class="btn btn-outline-info rounded-circle btn-icon"
-                                                data-toggle="tooltip" data-placement="top" title=""
-                                                data-original-title="Ver Colaborador" data-id="">
-                                                <i data-feather='info'></i>
+                                            data-toggle="modal"
+                                            data-target="#modal_edit_colaboradores"title=""
+                                                data-original-title="Editar Colaborador" data-id="">
+                                                <i data-feather='edit'></i>
                                             </button>
                                             <!--</div>-->
                                         </div>
