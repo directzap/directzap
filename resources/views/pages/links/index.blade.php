@@ -84,7 +84,8 @@
                                             </button>
                                             <button class="btn btn-info rounded-circle btn-icon"
                                                 data-target="#info_colab_link" data-toggle="modal" data-placement="top"
-                                                title="" data-original-title="Info Colaborador ao Link" data-id="">
+                                                title="" data-original-title="Info Colaborador ao Link" data-id=""
+                                                onclick="collaboratoresLink({{ $link->id }})">
                                                 <i data-feather='info'></i>
                                             </button>
                                             <!--</div>-->
@@ -118,9 +119,12 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="col-12 no-padding-mobile">
-                                <div class="card">
+                        <form action="{{ route('addCollaborators') }}" method="post">
+                            @csrf
+                            <div id="input"></div>
+                            <div class="row">
+                                <div class="col-12 no-padding-mobile">
+                                    <div class="card">
                                         <table id="add_colab_link_datatable">
                                             <thead>
                                                 <tr>
@@ -145,14 +149,64 @@
                                             <tbody id="add_colab_link_body">
                                             </tbody>
                                         </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary text-center w-25">Salvar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="info_colab_link" tabindex="-1" aria-labelledby="links" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModal">Informações sobre esse link</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="info_colab_link_section">
+                        <div class="row my-2">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary text-center w-25">Salvar</button>
+                                <h4>Aqui estão o(s) colaborador(es) desse link</h4>
                             </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="col-12 no-padding-mobile">
+                                <div class="card">
+                                    <table id="info_colab_link_table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <h4 class="title-table">
+                                                        Colaboradores
+                                                    </h4>
+                                                </th>
+                                                <th>
+                                                    <h4 class="title-table">
+                                                        Remover
+                                                    </h4>
+                                                </th>
+                                                <!-- <th class="options" style="max-width: 180px !important">Opções</th>-->
+                                            </tr>
+                                        </thead>
+                                        <tbody id="info_colab_link_body">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -190,7 +244,7 @@
                             '<div class="d-flex justify-content-center">' +
                             '<div class="custom-control custom-checkbox">' +
                             '<input type="checkbox" class="custom-control-input" id="customCheck' +
-                            index + '" name="collaborator[]">' +
+                            index + '" name="collaborator[]" value="' + collaborator.id + '"">' +
                             '<label class="custom-control-label content-text" for="customCheck' +
                             index + '">' +
                             collaborator.name +
@@ -211,6 +265,60 @@
                             '  </td>' +
                             '</tr>')
                     });
+
+                    $('#input').append(
+                        '<input type="hidden" value="' + id + '" name="link"/>'
+                    )
+                }
+            });
+        }
+
+        function collaboratoresLink(id) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: 'links/collaborators-link/' + id,
+                success: function(collaborators) {
+                    $.each(collaborators, function(index, collaborator) {
+                        $('#info_colab_link_body').append(' <tr id="info'+ collaborator.id +'" style="width:100%;">' +
+                            '<td class="">' +
+                            '<h6 class="content-text">' +
+                            collaborator.name +
+                            '</h6>' +
+                            '</td>' +
+                            '<td>' +
+                            '<div class="row last-td">' +
+                            '<button class="btn btn-danger rounded-circle btn-icon"' +
+                            'data-toggle="tooltip" data-placement="top" title=""' +
+                            'data-original-title="Deletar Link" data-id=""'+
+                            `onclick="deleteCollaboratorLink(`+ id + `,` + collaborator.id +`)"` +
+                            '>' +
+                            '<i data-feather="trash-2" class="fas fa-trash"></i>' +
+                            '</button>' +
+                            ' </div>' +
+                            '</td>' +
+                            '</tr>')
+                    });
+
+                    $('#input').append(
+                        '<input type="hidden" value="' + id + '" name="link"/>'
+                    )
+                }
+            });
+        }
+
+        function deleteCollaboratorLink(link_id, collaborator_id) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: 'links/delete-collaborator-link/',
+                data: {
+                    'link_id': link_id,
+                    'collaborator_id': collaborator_id,
+                    "_token": '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    $('#info'+ collaborator_id ).remove();
                 }
             });
         }
