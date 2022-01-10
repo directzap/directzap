@@ -7,15 +7,16 @@
             </div>
             <div class="col-md-12">
                 <div class="row text-right mb-2">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
-                    </div>
-                    <div class="col-md-4 text-end">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#make_alert">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#make_update_note">
+                            Criar Nota de Atualização
+                        </button>
+
+
+                        <button type="button" class="btn btn-primary ml-2 mr-2" data-toggle="modal" data-target="#make_alert">
                             Criar Alerta para usuários
                         </button>
-                    </div>
-                    <div class="col-md-2 text-end">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#active_account">
                             Ativar Conta
                         </button>
@@ -130,6 +131,48 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Criar Alerta</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="make_update_note" tabindex="-1" aria-labelledby="links" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModal">Nota de Atualização </h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('alerts.store') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="title_alert">Título da Atualização</label>
+                            <input type="text" class="form-control" id="title_alert" name="title" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alert_type">Tipo de Atualização</label>
+                            <select class="form-control" id="alert_type" name="type">
+                                <option value="danger">Atualizado</option>
+                                <option value="sucess">Em Andamento</option>
+                                <option value="warning">Em Breve</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="msg_alert">Texto</label>
+                            <textarea class="form-control" id="msg_alert" rows="3" placeholder=""
+                                name="message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Criar Nota</button>
                     </form>
 
                 </div>
