@@ -192,6 +192,14 @@
     });
 </script>
 
+<script>
+
+    $( "#dropdown-notification" ).click(function() {
+        $("#dropdown-notification").addClass( "show" );
+        console.log("Clicou na notificação");
+    });
+
+</script>
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
@@ -229,7 +237,8 @@ integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026
 <!-- END: Theme JS-->
 
 <!-- BEGIN: Page JS-->
+{{--
 <script src="{{ asset('assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
-{{-- <script src="{{asset('assets/js/scripts/tables/table-datatables-basic.js')}}"></script> --}}
-<script src="{{ asset('assets/js/scripts/extensions/ext-component-toastr.min.js') }}"></script>
+ <script src="{{asset('assets/js/scripts/tables/table-datatables-basic.js')}}"></script>
+<script src="{{ asset('assets/js/scripts/extensions/ext-component-toastr.min.js') }}"></script>--}}
 <!-- END: Page JS-->

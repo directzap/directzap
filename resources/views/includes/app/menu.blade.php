@@ -90,15 +90,15 @@
                 <i class="icon-sidebar" data-feather='copy'></i>
                 <span class="name-sidebar">Copiar Link precell</span>
             </button>
-            <a class="{{ Route::currentRouteNamed('dashboard.links') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar" href="{{ route('links.index') }}">
+            <a href="{{ route('updates.index') }}" class="{{ Route::currentRouteNamed('integration.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar ">
                 <i class="icon-sidebar" data-feather='upload-cloud'></i>
                 <span class="name-sidebar">Atualizações</span>
-
             </a>
             <a href="{{ route('integration.index') }}" class="{{ Route::currentRouteNamed('integration.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar ">
                 <i class="icon-sidebar" data-feather='link-2'></i>
                 <span class="name-sidebar">Integrações</span>
             </a>
+
             <!--<li class=" has-sub ">
                 <button class="btn btn-primary btn-block btn-sidebar d-flex align-items-center" href="#">
                     <i class="icon-sidebar" data-feather='link'></i>
