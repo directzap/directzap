@@ -26,6 +26,13 @@ class CreateUsersTable extends Migration
             $table->string('pixel_gtm')->nullable();
             $table->string('pixel_facebook')->nullable();
             $table->longText('token_braip')->nullable();
+            $table->boolean('active')->default(0);
+            $table->boolean('is_admin')->default(0);
+            $table->boolean('count_life_time')->default(0);
+            $table->dateTime('date_purchase')->nullable();
+            $table->dateTime('date_finish')->nullable();
+            $table->integer('qtd_collaborators')->default(8);
+            $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

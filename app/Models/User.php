@@ -26,7 +26,8 @@ class User extends Authenticatable
         'company',
         'token_braip',
         'pixel_gtm',
-        'pixel_facebook'
+        'pixel_facebook',
+        'active'
     ];
 
     /**

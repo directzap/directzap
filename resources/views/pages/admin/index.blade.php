@@ -1,12 +1,9 @@
 @extends('layout.app')
 @section('content')
-
-
-
     <section id="admin_datatable">
         <div class="row">
             <div class="col-12 mb-2">
-                <h3 class="text-center" >Área Administrativa</h3>
+                <h3 class="text-center">Área Administrativa</h3>
             </div>
             <div class="col-md-12">
                 <div class="row text-right mb-2">
@@ -14,14 +11,12 @@
 
                     </div>
                     <div class="col-md-4 text-end">
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#make_alert">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#make_alert">
                             Criar Alerta para usuários
                         </button>
                     </div>
                     <div class="col-md-2 text-end">
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#active_account">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#active_account">
                             Ativar Conta
                         </button>
                     </div>
@@ -31,67 +26,67 @@
                 <div class="card">
                     <table id="admin_table">
                         <thead>
-                          <tr>
-                            <th>
-                                <h4 class="title-table">
-                                   Nome Completo
-                                </h4>
-                            </th>
-                            <th>
-                                <h4 class="title-table">
-                                   Email
-                                </h4>
-                            </th>
-                            <th>
-                                <h4 class="title-table">
-                                   Telefone
-                                </h4>
-                            </th>
-                            <th class="options" style="max-width: 180px !important">
-                                <h4 class="title-table">
-                                    Opções
-                                </h4>
-                            </th>
-                          </tr>
+                            <tr>
+                                <th>
+                                    <h4 class="title-table">
+                                        Nome Completo
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Email
+                                    </h4>
+                                </th>
+                                <th>
+                                    <h4 class="title-table">
+                                        Telefone
+                                    </h4>
+                                </th>
+                                <th class="options" style="max-width: 180px !important">
+                                    <h4 class="title-table">
+                                        Opções
+                                    </h4>
+                                </th>
+                            </tr>
                         </thead>
                         <tbody id="body_table_admin">
-                            <tr style="width:100%;">
-                              <td>
-                                 <h6 class="content-text">
-                                    Nome
-                                 </h6>
-                                </td>
-                              <td>
-                                 <h6 class="content-text">
-                                    mikewade2k16@gmail.com
-                                 </h6>
-                                </td>
-                              <td>
-                                 <h6 class="content-text">
-                                    Número
-                                 </h6>
-                                </td>
-                              <td>
-                                  <div class="row last-td">
-                                      <!-- <div class="col-md-4 col-flex">-->
-                                          <button class="btn btn-warning rounded-circle btn-icon"
-                                          data-toggle="tooltip" data-placement="top" title="" data-original-title="Deletar Colaborador"
-                                              data-id="">
-                                              <i data-feather='trash-2'></i>
-                                          </button>
-                                      <!--</div>-->
-                                      <!-- <div class="col-md-4 col-flex">-->
-                                          <button class="btn btn-info rounded-circle btn-icon"   data-target="#modal_adm_info"
-                                          data-toggle="modal" data-placement="top" title="" data-original-title="Ver Colaborador"
-                                              data-id="">
-                                              <i data-feather='info'></i>
-                                          </button>
-                                      <!--</div>-->
-                                  </div>
-
-
-                              </td>
-                            </tr>
+                            @foreach ($users as $user)
+                                <tr style="width:100%;" id="user{{ $user->id }}">
+                                    <td>
+                                        <h6 class="content-text">
+                                            {{ $user->name }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="content-text">
+                                            {{ $user->email }}
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="content-text">
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <div class="row last-td">
+                                            <!-- <div class="col-md-4 col-flex">-->
+                                            <button class="btn btn-warning rounded-circle btn-icon" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Deletar Colaborador"
+                                                data-id="" onclick="deleteUser({{ $user->id }})">
+                                                <i data-feather='trash-2'></i>
+                                            </button>
+                                            <!--</div>-->
+                                            <!-- <div class="col-md-4 col-flex">-->
+                                            <button class="btn btn-info rounded-circle btn-icon"
+                                                data-target="#modal_adm_info" data-toggle="modal" data-placement="top"
+                                                title="" data-original-title="Ver Colaborador" data-id=""
+                                                onclick="showUser({{ $user->id }})">
+                                                <i data-feather='info'></i>
+                                            </button>
+                                            <!--</div>-->
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -99,8 +94,188 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="make_alert" tabindex="-1" aria-labelledby="links" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModal">Criar Alerta </h5>
 
-  <!-- Basic table -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('alerts.store') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="title_alert">Título da Alerta</label>
+                            <input type="text" class="form-control" id="title_alert" name="title" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alert_type">Tipo de Alerta</label>
+                            <select class="form-control" id="alert_type" name="type">
+                                <option value="danger">Cuidado</option>
+                                <option value="sucess">Sucesso</option>
+                                <option value="warning">Atenção</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="msg_alert">Menssagem</label>
+                            <textarea class="form-control" id="msg_alert" rows="3" placeholder=""
+                                name="message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Criar Alerta</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="modal fade" id="active_account" tabindex="-1" aria-labelledby="active_account" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModal">Ativar Conta</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('user.active') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="name">Email que deseja ativar</label>
+                            <input type="text" class="form-control" id="email_active" name="email_active" placeholder="">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">Ativar Conta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modal_adm_info" tabindex="-1" aria-labelledby="modal_adm_info" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id=""> Informações do Cliente</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="" class="mt-2">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <div class="custom-control custom-switch custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="is_adm" value="1">
+                                    <label class="custom-control-label" for="customSwitch1">Tornar Administrador</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="custom-control custom-switch custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" name="life_time" value="1">
+                                    <label class="custom-control-label" for="customSwitch2">Ativar conta Lifetime</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-4 col-flex-center">
+                                <button class="btn btn-primary">Atvar Conta</button>
+                            </div>
+                            <div class="col-lg-4 col-flex-center">
+                                <button class="btn btn-primary" data-target="#add_colab_modal" data-toggle="modal">Adicionar
+                                    colaboradores</button>
+                            </div>
+
+                            <div class="col-lg-4 col-flex-center">
+                                <button class="btn btn-primary"> Renovar acesso</button>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-lg-4">
+                                <label for="">Data de compra: </label>
+                                <input type="text" class="form-control" id="name" name="name" value="25/10/2019" disabled>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="">Quantidade de colaboradores:</label>
+                                <input type="text" class="form-control" id="name" name="name" value="8" disabled>
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="">Dias restantes de acesso</label>
+                                <input type="text" class="form-control" id="name" name="name" value="25 dias" disabled>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Nome</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="Colab Name"
+                                        disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone">Telefone</label>
+                                    <input type="text" class="form-control" id="phone" name="phone"
+                                        value="ex: 21911112222" disabled>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3 w-25">Salvar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    <script>
+        function deleteUser(user_id) {
+            $.ajax({
+                type: "DELETE",
+                dataType: "json",
+                url: 'user/' + user_id,
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    $('#user' + user_id).remove();
+                }
+            });
+        }
+
+        function showUser(user_id) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: 'user/' + user_id,
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                },
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+    </script>
 @endsection

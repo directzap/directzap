@@ -11,6 +11,7 @@ use App\Http\Controllers\SingUpController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\CommissionsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AlertController;
 use App\Http\Controllers\BraipController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\IntegrationController;
@@ -47,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('updatePass/{id}', [UserController::class, 'updatatePass'])->name('user.updatePass');
     Route::post('pixel-facebook', [UserController::class, 'pixelFacebook'])->name('user.pixelFacebook');
     Route::post('pixel-gtm', [UserController::class, 'pixelGtm'])->name('user.pixelGtm');
+    Route::post('user-active', [UserController::class, 'userActive'])->name('user.active');
 
     Route::resource('faq', FaqController::class);
 
@@ -71,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('links/collaborators-link/{id}',[LinksController::class, 'collaboratorsLink'])->name('collaboratorsLink');
     Route::post('links/delete-collaborator-link/',[LinksController::class, 'deleteCollaboratorLink'])->name('deleteCollaboratorLink');
 
+    Route::resource('alerts', AlertController::class);
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 

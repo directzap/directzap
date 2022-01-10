@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alert;
+use App\Models\AlertUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AlertController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::where('email', '<>', auth()->user()->email)->get();
-
-        return view('pages.admin.index', [
-            'users' => $users
-        ]);
+        //
     }
 
     /**
@@ -39,7 +37,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $alert = Alert::create($request->all());
+        $users = User::all();
+
+        foreach ($users as $key => $user) {
+            AlertUser::create([
+                'alert_id' => $alert->id,
+                'user_id'  => $user->id
+            ]);
+        }
+
+        return redirect()->back()->with('Success', 'Alerta criado com sucesso');
     }
 
     /**
