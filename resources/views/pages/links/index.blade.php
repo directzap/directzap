@@ -280,7 +280,7 @@
                 url: 'links/collaborators-link/' + id,
                 success: function(collaborators) {
                     $.each(collaborators, function(index, collaborator) {
-                        $('#info_colab_link_body').append(' <tr style="width:100%;">' +
+                        $('#info_colab_link_body').append(' <tr id="info'+ collaborator.id +'" style="width:100%;">' +
                             '<td class="">' +
                             '<h6 class="content-text">' +
                             collaborator.name +
@@ -291,9 +291,9 @@
                             '<button class="btn btn-danger rounded-circle btn-icon"' +
                             'data-toggle="tooltip" data-placement="top" title=""' +
                             'data-original-title="Deletar Link" data-id=""'+
-                            `onclick="deleteCollaboratorLink(`+ id , collaborator.id +`)"`
+                            `onclick="deleteCollaboratorLink(`+ id + `,` + collaborator.id +`)"` +
                             '>' +
-                            '<i data-feather="trash-2"></i>' +
+                            '<i data-feather="trash-2" class="fas fa-trash"></i>' +
                             '</button>' +
                             ' </div>' +
                             '</td>' +
@@ -314,10 +314,11 @@
                 url: 'links/delete-collaborator-link/',
                 data: {
                     'link_id': link_id,
-                    'collaborator_id': collaborator_id
-                }
+                    'collaborator_id': collaborator_id,
+                    "_token": '{{ csrf_token() }}',
+                },
                 success: function(response) {
-                    alert('ok');
+                    $('#info'+ collaborator_id ).remove();
                 }
             });
         }
