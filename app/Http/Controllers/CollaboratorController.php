@@ -41,24 +41,18 @@ class CollaboratorController extends Controller
     public function store(Request $request)
     {
 
-        $config = Configuration::where('user_id', auth()->user()->id)->first();
+         $qtd_collaborators = Collaborator::where('users_id', auth()->user()->id)->count();
 
-        if ($config->collaborators < 8) {
+        if ($qtd_collaborators <= auth()->user()->qtd_collaborators) {
             $colaborador = Collaborator::Create([
                 'name' => $request->name,
                 'message' => $request->message,
                 'phone' => $request->phone,
                 'users_id' =>  auth()->user()->id,
             ]);
-            $count_collaborators = $config->collaborators + 1;
-            $config->fill([
-                'collaborators'  => $count_collaborators,
-            ]);
-
-            $config->save();
-            return redirect()->back()->with('success', 'Cadastrado com sucesso');
+            return response()->json('success');
         } else {
-            return redirect()->back()->with('error', 'Você possui o número máximo de colaboradores');
+            return response()->json('error');
         }
     }
 
@@ -70,7 +64,6 @@ class CollaboratorController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -81,7 +74,9 @@ class CollaboratorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $collaborator = Collaborator::find($id);
+
+        return response()->json($collaborator);
     }
 
     /**
@@ -93,7 +88,16 @@ class CollaboratorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $collaborador = Collaborator::find($id);
+            $collaborador->name = $request->name;
+            $collaborador->message = $request->message;
+            $collaborador->phone = $request->phone;
+            $collaborador->save();
+            return response()->json('success');
+        } catch (\Throwable $th) {
+            return response()->json('error');
+        }
     }
 
     /**
@@ -156,5 +160,13 @@ class CollaboratorController extends Controller
         $collaborator->save();
 
         return response()->json(true);
+    }
+
+    public function addNumberCollaborator(Request $request)
+    {
+        $user = User::find($request->id_user);
+        $user->qtd_collaborators = $user->qtd_collaborators + $request->add_collaboratos;
+        $user->save();
+        return redirect()->back()->with('success', 'Adicionado com sucesso');
     }
 }

@@ -29,9 +29,10 @@ class CreateUsersTable extends Migration
             $table->boolean('active')->default(0);
             $table->boolean('is_admin')->default(0);
             $table->boolean('count_life_time')->default(0);
-            $table->dateTime('date_purchase')->nullable();
-            $table->dateTime('date_finish')->nullable();
+            $table->date('date_purchase')->nullable();
+            $table->date('date_finish')->nullable();
             $table->integer('qtd_collaborators')->default(8);
+            $table->integer('qtd_links')->default(8);
             $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();

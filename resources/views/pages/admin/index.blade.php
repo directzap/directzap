@@ -183,42 +183,46 @@
                         <div class="row mb-3">
                             <div class="col-lg-6">
                                 <div class="custom-control custom-switch custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="is_adm" value="1">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="is_adm"
+                                        value="1">
                                     <label class="custom-control-label" for="customSwitch1">Tornar Administrador</label>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="custom-control custom-switch custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" name="life_time" value="1">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" name="life_time"
+                                        value="1">
                                     <label class="custom-control-label" for="customSwitch2">Ativar conta Lifetime</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-lg-4 col-flex-center">
-                                <button class="btn btn-primary">Atvar Conta</button>
+                                <button class="btn btn-primary" type="button">Ativar Conta</button>
                             </div>
                             <div class="col-lg-4 col-flex-center">
-                                <button class="btn btn-primary" data-target="#add_colab_modal" data-toggle="modal">Adicionar
+                                <button class="btn btn-primary" type="button" data-target="#add_colab_modal" data-toggle="modal">Adicionar
                                     colaboradores</button>
                             </div>
 
                             <div class="col-lg-4 col-flex-center">
-                                <button class="btn btn-primary"> Renovar acesso</button>
+                                <button class="btn btn-primary" type="button"> Renovar acesso</button>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-4">
                                 <label for="">Data de compra: </label>
-                                <input type="text" class="form-control" id="name" name="name" value="25/10/2019" disabled>
+                                <input type="text" class="form-control" id="date_purchase" name="date_purchase" readonly>
                             </div>
                             <div class="col-lg-4">
                                 <label for="">Quantidade de colaboradores:</label>
-                                <input type="text" class="form-control" id="name" name="name" value="8" disabled>
+                                <input type="text" class="form-control" id="qtd_collaborators" name="qtd_collaborators"
+                                    value="8" disabled>
                             </div>
                             <div class="col-lg-4">
                                 <label for="">Dias restantes de acesso</label>
-                                <input type="text" class="form-control" id="name" name="name" value="25 dias" disabled>
+                                <input type="text" class="form-control" id="missing_days" name="missing_days"
+                                    value="25 dias" disabled>
                             </div>
                         </div>
                         <div class="row">
@@ -246,6 +250,45 @@
             </div>
         </div>
     </div>
+
+ <div class="modal fade  modal-warning" id="add_colab_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Adicionar Mais Colaboradores</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{ route('addNumberCollaborator') }}" class="mt-2">
+                @csrf
+                <div class="modal-body">
+                    <input type="text" name="id_user" id="id_user" value="">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="collaborators_liberados">Colaboraderes liberados</label>
+                                    <input type="text" class="form-control" disabled id="collaborators_liberados" name="collaborators_liberados" value="8"
+                                        disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="add_collaboratos">Adicionar mais Colaboradores</label>
+                                    <input type="number" class="form-control" id="add_collaboratos" name="add_collaboratos" value=""
+                                        >
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')
@@ -273,7 +316,32 @@
                     "_token": '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    console.log(response);
+                    if (response.is_admin == 1) {
+                        $('#customSwitch1').attr('checked', true);
+                    }
+                    if (response.count_life_time == 1) {
+                        $('#customSwitch2').attr('checked', true);
+                    }
+
+                    var date_purchase = response.date_purchase.split('-');
+                    date_purchase = date_purchase[2] + '/' + date_purchase[1] + '/' + date_purchase[0];
+
+                    var date_finish = response.date_finish.split('-');
+                    date_finish = date_finish[2] + '/' + date_finish[1] + '/' + date_finish[0];
+
+                    var date1 = new Date(response.date_purchase);
+                    var date2 = new Date(response.date_finish);
+                    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                    $('#date_purchase').val(date_purchase)
+                    $('#qtd_collaborators').val(response.qtd_collaborators);
+                    $('#missing_days').val(diffDays + ' dias');
+                    $('#name').val(response.name);
+                    $('#phone').val(response.phone);
+                    $('#id_user').val(user_id);
+                    $('#collaborators_liberados').val(response.qtd_collaborators);
+
                 }
             });
         }

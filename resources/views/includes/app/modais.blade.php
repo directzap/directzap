@@ -30,13 +30,13 @@
          </div>
      </div>
  </div>
-
+{{--
  <div class="modal fade" id="modal_colaboradores" tabindex="-1" aria-labelledby="modal_colaboradores"
      aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id=""> Cadastrar Novo Colaborador </h5>
+                 <h5 class="modal-title" id="title-modal-colaboradores"> Cadastrar Novo Colaborador </h5>
 
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
@@ -78,7 +78,7 @@
              </div>
          </div>
      </div>
- </div>
+ </div> --}}
 
  <div class="modal fade" id="pixelModal" tabindex="-1" aria-labelledby="PixelModal" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered ">
@@ -114,51 +114,6 @@
      </div>
  </div>
 
- <div class="modal fade" id="modal_edit_colaboradores" tabindex="-1" aria-labelledby="modal_colaboradores"
-     aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="modal_colaboradores">Editar Colaborador</h5>
-
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-
-             <div class="modal-body">
-                 <form method="POST" action="{{ route('colaboradores.store') }}">
-                     @csrf
-
-                     <div class="form-group">
-                         <label for="name">Nome</label>
-
-                         <input type="text" class="form-control" id="name" name="name" placeholder="Nome e Sobrenome">
-                     </div>
-
-                     <div class="form-group">
-                         <label for="message">Mensagem</label>
-
-                         <input type="text" class="form-control" id="message" name="message"
-                             placeholder="ex: Olá, John!">
-                     </div>
-
-                     <div class="form-group">
-                         <label for="phone">Telefone</label>
-
-                         <input type="text" class="form-control" id="phone" name="phone" placeholder="ex: 21911112222">
-                     </div>
-
-                     <div class="modal-footer">
-                         <button type="submit" class="btn btn-primary btn-block">
-                             Adicionar
-                         </button>
-                     </div>
-                 </form>
-             </div>
-         </div>
-     </div>
- </div>
 
  <div class="modal fade" id="distriCod" tabindex="-1" aria-labelledby="distriCod" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered">
@@ -293,43 +248,6 @@
  </div>
 
 
- <div class="modal fade  modal-warning" id="add_colab_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="">Adicionar Mais Colaboradores</h5>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="" class="mt-2">
-                @csrf
-                <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="name">Colaboraderes liberados</label>
-                                    <input type="text" class="form-control" disabled id="name" name="name" value="8"
-                                        disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="phone">Adicionar mais Colaboradores</label>
-                                    <input type="number" class="form-control" id="phone" name="phone" value=""
-                                        >
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
  <div class="modal fade  modal-success" id="copy_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">

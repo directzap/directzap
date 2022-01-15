@@ -17,7 +17,12 @@ class LinksController extends Controller
     public function index()
     {
         $links = Link::where('user_id', auth()->user()->id)->get();
-
+        $links_collaborator = [];
+        foreach ($links as $key => $link) {
+            $links_collaborator[$key] = $link;
+            $links_collaborator[$key]['qtd_collaborators'] = DB::table('collaborator_link')
+                ->where('link_id', $link->id)->count();
+        }
         return view('pages.links.index', [
             'links' => $links
         ]);
@@ -41,12 +46,16 @@ class LinksController extends Controller
      */
     public function store(Request $request)
     {
-        $link = Link::create([
-            'name' => $request->link_name,
-            'precell' => $request->precell,
-            'dominio' => $request->dominio,
-            'user_id' => auth()->user()->id
-        ]);
+        $links = Link::where('user_id', auth()->user()->id)->count();
+        if ($links <= auth()->user()->qtd_links) {
+
+            $link = Link::create([
+                'name' => $request->link_name,
+                'precell' => $request->precell,
+                'dominio' => $request->dominio,
+                'user_id' => auth()->user()->id
+            ]);
+        }
 
         return redirect()->back()->with('success', 'Cadastro realizado com sucesso!');
     }

@@ -26,8 +26,8 @@ class UsersTableSeeder extends Seeder
             'qtd_collaborators' => 900
         ]);
 
-        $date_current = date('Y/m/d H:i:s');
-        $date_exp = date('Y-m-d H:i:s', strtotime('+30 days', strtotime(date('Y-m-d H:i:s'))));
+        $date_current = date('Y/m/d');
+        $date_exp = date('Y-m-d', strtotime('+30 days', strtotime(date('Y-m-d'))));
 
         User::create([
             'name'      => 'user',
@@ -40,8 +40,8 @@ class UsersTableSeeder extends Seeder
             'phone' => '999999999'
         ]);
 
-        $date_start = date('Y-m-d H:i:s', strtotime('-31 days', strtotime(date('Y-m-d H:i:s'))));
-        $date_exp = date('Y-m-d H:i:s', strtotime('-1 days', strtotime(date('Y-m-d H:i:s'))));
+        $date_start = date('Y-m-d', strtotime('-31 days', strtotime(date('Y-m-d'))));
+        $date_exp = date('Y-m-d', strtotime('-1 days', strtotime(date('Y-m-d'))));
 
         User::create([
             'name'      => 'user2',

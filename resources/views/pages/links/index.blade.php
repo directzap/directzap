@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-4">
                 <input type="text" class="form-control" id="link_limit" name="link_limit" placeholder=""
-                    value="Limite de links: 16" disabled>
+                    value="Limite de links: {{ auth()->user()->qtd_links }}" disabled>
             </div>
             <div class="col-md-4 text-right">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register_link">
@@ -85,7 +85,7 @@
                                             <button class="btn btn-info rounded-circle btn-icon"
                                                 data-target="#info_colab_link" data-toggle="modal" data-placement="top"
                                                 title="" data-original-title="Info Colaborador ao Link" data-id=""
-                                                onclick="collaboratoresLink({{ $link->id }})">
+                                                onclick="collaboratoresLink('{{ $link->name }}', {{ $link->id }})">
                                                 <i data-feather='info'></i>
                                             </button>
                                             <!--</div>-->
@@ -179,7 +179,7 @@
                     <div id="info_colab_link_section">
                         <div class="row my-2">
                             <div class="col-md-12">
-                                <h4>Aqui estão o(s) colaborador(es) desse link</h4>
+                                <h4 id="title-link">Aqui estão o(s) colaborador(es) do link </h4>
                             </div>
 
                         </div>
@@ -238,6 +238,7 @@
                 dataType: "json",
                 url: 'links/show-add-collaborators/' + id,
                 success: function(collaborators) {
+                    $('#add_colab_link_body').html('');
                     $.each(collaborators, function(index, collaborator) {
                         $('#add_colab_link_body').append(' <tr style="width:100%;">' +
                             '<td class="">' +
@@ -273,14 +274,18 @@
             });
         }
 
-        function collaboratoresLink(id) {
+        function collaboratoresLink(name, id) {
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 url: 'links/collaborators-link/' + id,
                 success: function(collaborators) {
+                    console.log(name);
+                    $('#title-link').html('Aqui estão o(s) colaborador(es) do link ' + name);
+                    $('#info_colab_link_body').html(' ');
                     $.each(collaborators, function(index, collaborator) {
-                        $('#info_colab_link_body').append(' <tr id="info'+ collaborator.id +'" style="width:100%;">' +
+                        $('#info_colab_link_body').append(' <tr id="info' + collaborator.id +
+                            '" style="width:100%;">' +
                             '<td class="">' +
                             '<h6 class="content-text">' +
                             collaborator.name +
@@ -290,8 +295,8 @@
                             '<div class="row last-td">' +
                             '<button class="btn btn-danger rounded-circle btn-icon"' +
                             'data-toggle="tooltip" data-placement="top" title=""' +
-                            'data-original-title="Deletar Link" data-id=""'+
-                            `onclick="deleteCollaboratorLink(`+ id + `,` + collaborator.id +`)"` +
+                            'data-original-title="Deletar Link" data-id=""' +
+                            `onclick="deleteCollaboratorLink(` + id + `,` + collaborator.id + `)"` +
                             '>' +
                             '<i data-feather="trash-2" class="fas fa-trash"></i>' +
                             '</button>' +
@@ -318,7 +323,7 @@
                     "_token": '{{ csrf_token() }}',
                 },
                 success: function(response) {
-                    $('#info'+ collaborator_id ).remove();
+                    $('#info' + collaborator_id).remove();
                 }
             });
         }
