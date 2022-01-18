@@ -13,13 +13,13 @@ class LineChart
         $this->chart = $chart2;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\LineChart
+    public function build(): \ArielMejiaDev\LarapexCharts\barChart
     {
-        return $this->chart->lineChart()
-            ->setTitle('Comissões / Valor Liquido')
-            ->setSubtitle('')
-            ->addData('Physical sales', [40, 93, 35, 42, 18, 82])
-            ->addData('Digital sales', [70, 29, 77, 28, 55, 45])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+        return $this->chart->barChart()
+
+
+        ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
+        ->addData('Boston', [7, 3, 8, 2, 6, 4])
+        ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
     }
 }

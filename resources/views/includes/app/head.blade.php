@@ -46,6 +46,7 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/core/menu/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/dashboard-ecommerce.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/pages/app-email.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/charts/chart-apex.css') }}">
 
     <!-- END: Page CSS-->

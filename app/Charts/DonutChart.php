@@ -18,7 +18,7 @@ class DonutChart
 
 
         return $this->chart->donutChart()
-            ->setTitle('Conversão de Pix')
+
             ->setSubtitle('')
             ->addData([62.2 , 37.8])
             ->setLabels(['Pix Pagos', 'Pix Pendentes']);

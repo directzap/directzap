@@ -224,9 +224,6 @@ integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026
 <script src="{{ asset('assets/vendors/js/vendors.min.js') }}"></script>
 <script src="{{ asset('assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
-<!-- END: Page Vendor JS-->
-
-<!-- BEGIN: Page Vendor JS-->
 <script src="{{ asset('assets/vendors/js/charts/apexcharts.js') }}"></script>
 <script src="{{ asset('assets/js/scripts/charts/chart-apex.js') }}"></script>
 <!-- END: Page Vendor JS-->
@@ -237,6 +234,7 @@ integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026
 <!-- END: Theme JS-->
 
 <!-- BEGIN: Page JS-->
+<script src="{{ asset('assets/js/scripts/pages/app-email.js')}}"></script>
 {{--
 <script src="{{ asset('assets/js/scripts/pages/dashboard-ecommerce.js') }}"></script>
  <script src="{{asset('assets/js/scripts/tables/table-datatables-basic.js')}}"></script>

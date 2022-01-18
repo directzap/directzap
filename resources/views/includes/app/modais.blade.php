@@ -78,7 +78,8 @@
              </div>
          </div>
      </div>
- </div> --}}
+ </div>
+ --}}
 
  <div class="modal fade" id="pixelModal" tabindex="-1" aria-labelledby="PixelModal" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered ">

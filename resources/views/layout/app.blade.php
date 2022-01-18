@@ -56,6 +56,21 @@
                 }
             });
         }
+        $(document).ready(function() {
+            var ls = localStorage.getItem("modal");
+            if(!ls){
+                $('#modal_register_phone').modal('show');
+            }
+            $('#modal_register_phone').on('shown.bs.modal', function(){
+                localStorage.setItem("modal", true);
+            });
+        })
+
+        //Abrindo os dropdowns quando inicia o sistema para desbugar eles
+        $('#dropdown_notification').dropdown('toggle');
+        $('#dropdown_user').dropdown('toggle');
+
+
     </script>
     @yield('js')
 </body>

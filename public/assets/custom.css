@@ -375,12 +375,12 @@ tbody {
     width: 1.3rem !important;
 
 }
-/* Charts*/
+/* Charts*
 .apexcharts-pie{
     transform: translateX(100px) scale(.46) !important;
 }
 .apexcharts-canvas, .container-chart, foreignObject{
-  /*  width: 560px !important; */
+  /*  width: 560px !important; *
     height: 282.7px !important;
 
 }
@@ -413,6 +413,7 @@ tspan{
     padding: 15px;
     border-radius: 15px;
 }
+
 .apexcharts-legend{
     top: 50% !important;
     right: 10% !important;
@@ -433,14 +434,14 @@ tspan{
     align-items: flex-start !important;
     height: 95%;
    /* flex-wrap: wrap;
-    width: 325px;*/
+    width: 325px;*
 }
 .chart-boletos .apexcharts-legend-series{
     margin: 0 5px !important;
 }
 .chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
     font-size: 10px !important;
-}
+} */
 /* End charts*/
 table thead tr {
     height: 50px;
@@ -559,24 +560,38 @@ table.dataTable thead .sorting:before{
         transform: translateX(28%) !important;
     }
 }*/
+.note-link{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.header-note, .title-box-modal{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #2c2c2c;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00a4b1;
+  background-clip: content-box;
+  border-radius: 10px;
+  border: 4px solid  #00a4b1;
+
+}
 @media (max-width:700px) {
-    .apexcharts-pie {
+   /* .apexcharts-pie {
         transform: translateX(0px) scale(3.5) !important;
     }
-    .col-color:first-child{
-       /* margin-bottom: 20px; */
-    }
-    .col-color{
-        padding: 10px 5px !important;
-        border-radius: 10px;
-    }
-    .col-color label{
-        font-size: 8px;
-    }
-    .col-color h4{
-        font-size: 12px;
-    }
-    .container-chart .apexcharts-title-text {
+     .container-chart .apexcharts-title-text {
         transform: translateX(15%) !important;
     }
     .apexcharts-inner {
@@ -603,7 +618,7 @@ table.dataTable thead .sorting:before{
         font-size: 9px;
     }
 
-    /* Toltip do gráfico*/
+    /* Toltip do gráfico*
     .apexcharts-tooltip {
         opacity: 1 !important;
 
@@ -623,9 +638,18 @@ table.dataTable thead .sorting:before{
         z-index: 12;
         transition: 0.15s ease all;
     }
-    .apexcharts-tooltip-series-group{
-
+    */
+    .col-color{
+        padding: 10px 5px !important;
+        border-radius: 10px;
     }
+    .col-color label{
+        font-size: 8px;
+    }
+    .col-color h4{
+        font-size: 12px;
+    }
+
 
 
 }

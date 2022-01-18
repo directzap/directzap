@@ -20,16 +20,12 @@
 
         </div>
         <ul class="nav navbar-nav align-items-center ml-auto">
-            <li id="dropdown-notification" class="nav-item dropdown dropdown-notification mr-25"
-            onclick="(function(){
-                $("#dropdown-notification").addClass( "show" );
-                })
-            >
-                <a class="nav-link" href="javascript:void(0);" data-toggle="dropdown">
+            <li  class="nav-item dropdown dropdown-notification mr-25">
+                <a id="dropdown_notification" class="nav-link" href="javascript:void(0);" data-toggle="dropdown">
                         <i class="ficon" data-feather="bell"></i>
                         <span class="badge badge-pill badge-danger badge-up">5</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                <ul  class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class="dropdown-header d-flex">
                             <h4 class="notification-title mb-0 mr-auto">Notificações</h4>
@@ -95,19 +91,25 @@
                 </ul>
             </li>
             <li class="nav-item dropdown dropdown-user">
-                <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
+
+                <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown_user" href="javascript:void(0);"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
                         <span class="user-name font-weight-bolder">{{ auth()->user()->name }}</span>
                         <!--<span class="user-status">Admin</span>-->
                     </div>
                     <span class="avatar">
-                        <img class="round" src="{{ asset('assets/images/profile/userPlaceholder.png') }}"
+                           <img class="round"src="{{ asset('assets/images/profile/userPlaceholder.png') }}"
                             alt="avatar" height="40" width="40">
+                        {{-- <img class="round" src="@if ($user->avatar)
+                         {{ asset("uploads/avatars/$user->avatar") }}
+                         @else
+                         {{ asset('assets/images/profile/userPlaceholder.png') }} @endif"
+                            alt="avatar" height="40" width="40">--}}
                         <!--<span class="avatar-status-online"></span>-->
                     </span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                <div id="dropdown_menu_user" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                     <a class="dropdown-item user-itens" href="{{ route('user.index') }}"><svg
                             xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

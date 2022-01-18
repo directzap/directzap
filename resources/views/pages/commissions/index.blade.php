@@ -272,9 +272,16 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="line-chart">
-                {!! $chart4->container() !!}
+            <div class="card">
+                <div class="card-header flex-column align-items-start">
+                    <h4 class="card-title mb-75">Gráfico de comissões durante o ano</h4>
+                    <span class="card-subtitle text-muted"></span>
+                </div>
+                <div class="card-body">
+                    {!! $chart4->container() !!}
+                </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -282,16 +289,13 @@
 
 
 <script src="{{ $chart->cdn() }}"></script>
+<script src="{{ $chart2->cdn() }}"></script>
+<script src="{{ $chart4->cdn() }}"></script>
+<script src="{{ $chart5->cdn() }}"></script>
 
 {{ $chart->script() }}
-
-<script src="{{ $chart2->cdn() }}"></script>
-
 {{ $chart2->script() }}
-
-<script src="{{ $chart4->cdn() }}"></script>
-
 {{ $chart4->script() }}
-
+{{ $chart5->script() }}
 
 @endsection

@@ -224,33 +224,42 @@
                     <form method="POST" action="" class="mt-2">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-lg-6">
+                          <!--  <div class="col-lg-4">
                                 <div class="custom-control custom-switch custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" name="is_adm"
-                                        value="1">
-                                    <label class="custom-control-label" for="customSwitch1">Tornar Administrador</label>
+                                    <input type="text" class="form-control" id="type_user" name="type_user"
+                                        value="">
+                                    <label class="" for="type_user">Tipo de Usuário</label>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                        -->
+                            <div class="col-lg-4">
                                 <div class="custom-control custom-switch custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" name="life_time"
+                                    <input type="checkbox" class="custom-control-input" id="turn_adm_check" name="is_adm"
                                         value="1">
-                                    <label class="custom-control-label" for="customSwitch2">Ativar conta Lifetime</label>
+                                    <label class="custom-control-label" for="turn_adm_check">Tornar Administrador</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="custom-control custom-switch custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="turn_life_time_check" name="life_time"
+                                        value="1">
+                                    <label class="custom-control-label" for="turn_life_time_check">Ativar conta Lifetime</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-lg-4 col-flex-center">
-                                <button class="btn btn-primary" type="button">Ativar Conta</button>
+                                <button class="btn btn-primary" type="button" data-target="#extend_acess" data-toggle="modal">Extender Acesso</button>
                             </div>
                             <div class="col-lg-4 col-flex-center">
                                 <button class="btn btn-primary" type="button" data-target="#add_colab_modal" data-toggle="modal">Adicionar
                                     colaboradores</button>
                             </div>
-
+                            <!--
                             <div class="col-lg-4 col-flex-center">
                                 <button class="btn btn-primary" type="button"> Renovar acesso</button>
                             </div>
+                        -->
                         </div>
                         <div class="row mb-2">
                             <div class="col-lg-4">
@@ -294,44 +303,77 @@
         </div>
     </div>
 
- <div class="modal fade  modal-warning" id="add_colab_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="">Adicionar Mais Colaboradores</h5>
+    <div class="modal fade  modal-warning" id="add_colab_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Adicionar Mais Colaboradores</h5>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('addNumberCollaborator') }}" class="mt-2">
+                    @csrf
+                    <div class="modal-body">
+                        <label for="collaborators_liberados">Id Colaborador</label>
+                        <input class="form-control" type="text" name="id_user" id="id_user" value="" disabled>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="collaborators_liberados">Colaboraderes liberados</label>
+                                        <input type="text" class="form-control" disabled id="collaborators_liberados" name="collaborators_liberados" value="8"
+                                            disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="add_collaboratos">Adicionar mais Colaboradores</label>
+                                        <input type="number" class="form-control" id="add_collaboratos" name="add_collaboratos" value=""
+                                            >
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                    </div>
+                </form>
             </div>
-            <form method="POST" action="{{ route('addNumberCollaborator') }}" class="mt-2">
-                @csrf
-                <div class="modal-body">
-                    <input type="text" name="id_user" id="id_user" value="">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="collaborators_liberados">Colaboraderes liberados</label>
-                                    <input type="text" class="form-control" disabled id="collaborators_liberados" name="collaborators_liberados" value="8"
-                                        disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="add_collaboratos">Adicionar mais Colaboradores</label>
-                                    <input type="number" class="form-control" id="add_collaboratos" name="add_collaboratos" value=""
-                                        >
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Salvar</button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
+
+    <div class="modal fade  modal-success" id="extend_acess" tabindex="-1" aria-labelledby="extend_acess" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Estender Dias de Acesso</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="" class="mt-2">
+                    @csrf
+                    <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="collaborators_liberados">Coloque os dias adicionais de acesso</label>
+                                        <input type="number" class="form-control"  id="extend_days" name="extend_days" value=""
+                                            >
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
@@ -388,5 +430,23 @@
                 }
             });
         }
+
+
+        //Ativação do checkbox pra tornar adm e lifetiem acount
+        $('#turn_adm_check').on('change', function() {
+            if($(this).prop("checked")){
+              $(this).val('adm');
+            }else if( !$(this).prop("checked")){
+               $(this).val('user');
+            }
+        });
+        $('#turn_life_time_check').on('change', function() {
+            if($(this).prop("checked")){
+                $(this).val('life-time');
+            }else if( !$(this).prop("checked")){
+                $(this).val('normal');
+            }
+        });
+
     </script>
 @endsection
