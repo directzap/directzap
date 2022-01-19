@@ -30,8 +30,8 @@
         </div>
         <div class="row">
             <div class="col-12 no-padding-mobile">
-                <div class="card">
-                    <table id="links_table">
+                <div class="">
+                    <table class="w-100" id="links_table">
                         <thead>
                             <tr>
                                 <th class="">

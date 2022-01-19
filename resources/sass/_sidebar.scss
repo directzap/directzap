@@ -1,0 +1,88 @@
+/*SideBar begin*/
+a:hover {
+    color: #00c6d4;
+}
+img{
+    width: 100%;
+}
+.navbar-header {
+    border-bottom: 1px solid #03666d;
+    color: white !important;
+    padding-bottom: 15px !important;
+    height: 80px !important;
+}
+.brand-text {
+    padding-left: 40px !important;
+}
+.btn-sidebar {
+    display: flex;
+    justify-content: start;
+    padding: 15px 0px;
+    padding-left: 65px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent !important;
+    border: none;
+    position: relative;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+.btn-sidebar:hover {
+    /*   background-color: #7367f0 !important;*/
+    background-color: #00a4b1 !important;
+}
+.btn-sidebar.active{
+    background-color: #00a4b1 !important;
+}
+.btn-sidebar:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.main-menu.expanded .brand-logo{
+   // background: url('assets/images/logo/logo-horizontal.png') no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+.main-menu .navbar-header .navbar-brand .brand-logo img {
+    max-width: 100% !important; 
+}
+.logo-sidebar {
+    position: absolute;
+    left: 40%;
+    top: 45%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 150px;
+}
+.icon-sidebar {
+    position: absolute;
+    left: 30px;
+    transform: translateX(-50%);
+}
+.name-sidebar {}
+.menu-content .links {}
+.menu-content .links:hover {
+    color: #03666d !important;
+}
+.menu-content .links:active {
+    color: #03666d !important;
+    background-color: transparent !important;
+}
+.btn-sidebar-secund {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding: 10px 0;
+    margin-top: 5px !important;
+    border-radius: 0 !important;
+}
+.adm-btn:hover{
+    background-color: #00a4b1 !important;
+}
+.adm-btn{
+    background-color: #03666d !important;
+}
+.main-menu.menu-native-scroll .main-menu-content {
+    overflow-y: auto !important;
+}
+/*End Side bar*/

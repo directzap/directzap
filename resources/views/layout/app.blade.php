@@ -15,11 +15,12 @@
             </div>
             <div class="content-body">
                 <section class="" id="background-flutuante">
-                    <div class="card principal-row">
+                    @yield('content')
+                    {{--<div class="card principal-row">
                         <div class="card-body">
                             @yield('content')
                         </div>
-                    </div>
+                    </div>--}}
                 </section>
             </div>
         </div>

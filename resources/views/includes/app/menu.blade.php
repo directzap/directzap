@@ -5,8 +5,8 @@
             <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('dashboard.index') }}"><span
                         class="brand-logo">
                         <img class="text-center logo-sidebar"
-                            src="{{ asset('assets/images/logo/LogoSite.png') }}" alt="">
-                        <h2 class="brand-text">Direct Zap</h2>
+                            src="{{ asset('assets/images/logo/logo-horizontal.png') }}" alt="">
+                        <!--<h2 class="brand-text">Direct Zap</h2>-->
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
                     <i class="d-block d-xl-none text-primary toggle-icon font-medium-4 fas fa-times"></i>

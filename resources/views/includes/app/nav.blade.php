@@ -36,36 +36,15 @@
                         <a class="d-flex" href="javascript:void(0)">
                             <div class="media d-flex align-items-start">
                                 <div class="media-left">
-                                    <div class="avatar"><img src="../../../app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" width="32" height="32"></div>
+                                    <div class="avatar"><img src="{{ asset('assets/images/portrait/small/avatar-s-15.jpg')}}" alt="avatar" width="32" height="32"></div>
                                 </div>
                                 <div class="media-body">
-                                    <p class="media-heading"><span class="font-weight-bolder">Congratulation Sam 🎉</span>winner!</p><small class="notification-text"> Won the monthly best seller badge.</small>
+                                    <p class="media-heading"><span class="font-weight-bolder">Bem Vindo ao DirectZap! 🎉</span></p><small class="notification-text"> <a href="">Clique aqui</a> para saber mais sobre essa nova versão</small>
                                 </div>
                             </div>
                         </a>
-                        <a class="d-flex" href="javascript:void(0)">
-                            <div class="media d-flex align-items-start">
-                                <div class="media-left">
-                                    <div class="avatar"><img src="../../../app-assets/images/portrait/small/avatar-s-3.jpg" alt="avatar" width="32" height="32"></div>
-                                </div>
-                                <div class="media-body">
-                                    <p class="media-heading"><span class="font-weight-bolder">New message</span>&nbsp;received</p><small class="notification-text"> You have 10 unread messages</small>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="d-flex" href="javascript:void(0)">
-                            <div class="media d-flex align-items-start">
-                                <div class="media-left">
-                                    <div class="avatar bg-light-danger">
-                                        <div class="avatar-content">MD</div>
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <p class="media-heading"><span class="font-weight-bolder">Revised Order 👋</span>&nbsp;checkout</p><small class="notification-text"> MD Inc. order updated</small>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="media d-flex align-items-center">
+
+                        {{--<div class="media d-flex align-items-center">
                             <h6 class="font-weight-bolder mr-auto mb-0">Notificações de Atualizações</h6>
                           <!--  <div class="custom-control custom-control-primary custom-switch">
                                 <input class="custom-control-input" id="systemNotification" type="checkbox" checked="">
@@ -84,7 +63,7 @@
                                 </div>
                             </div>
                         </a>
-
+                        --}}
                     </li>
                     <li class="dropdown-menu-footer">
                         <a class="btn btn-primary btn-block" href="{{ route('notifications.index') }}">Ver Todas Notificações</a></li>

@@ -1,0 +1,95 @@
+
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #2c2c2c;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00a4b1;
+  background-clip: content-box;
+  border-radius: 10px;
+  border: 4px solid  #00a4b1;
+
+}
+
+/* Icones*/
+.feather, [data-feather] {
+    height: 1.3rem !important;
+    width: 1.3rem !important;
+
+}
+
+/*Links Copy*/
+.link-copy {
+    opacity: 0;
+    position: absolute;
+}
+
+/*End Links copy*/
+
+.collapse-toggle-icon,
+.modern-nav-toggle,
+.nav-toggle svg,
+.dark-layout .main-menu .collapse-toggle-icon {
+    color: #00a4b1 !important;
+}
+
+.center_flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-adm {
+    background-color: rgba(22, 29, 49, 0.5) !important;
+}
+/**/
+.col-flex-center{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#modal_adm_info .modal-body{
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+.links-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/*Links*/
+*{
+    transition: all .3s ease-in-out;
+}
+.small-info{
+    font-size: 10px;
+    margin-top: 10px;
+
+}
+.dominios-select{
+    transition: all .3s ease-in-out;
+}
+.dominios-select{
+    display: none;
+}
+.dominios-select.on{
+    display: block !important;
+    transition: all .3s ease-in-out;
+}
+
+@media (max-width:700px) {
+    .col-color{
+        padding: 10px 5px !important;
+        border-radius: 10px;
+    }
+    .col-color label{
+        font-size: 8px;
+    }
+    .col-color h4{
+        font-size: 12px;
+    }
+}

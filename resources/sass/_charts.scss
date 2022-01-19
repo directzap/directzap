@@ -1,0 +1,151 @@
+/* Charts*
+.apexcharts-pie{
+    transform: translateX(100px) scale(.46) !important;
+}
+.apexcharts-canvas, .container-chart, foreignObject{
+  /*  width: 560px !important; *
+    height: 282.7px !important;
+
+}
+.apexcharts-legend.apx-legend-position-right{
+    justify-content: center !important;
+    align-items: flex-start !important;
+}
+ .line-chart{
+    height: 520.7px !important;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 15px;
+}
+
+text{
+    fill: rgb(255, 255, 255) !important;
+    transform: translateX(22%);
+    font-size: 18px;
+}
+tspan{
+    font-size: 12px;
+}
+.line-chart text{
+    fill: rgb(255, 255, 255) !important;
+    transform: translateX(0%);
+    font-size: 18px;
+}
+.content-sales .col-color, .container-chart{
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.apexcharts-legend{
+    top: 50% !important;
+    right: 10% !important;
+    transform: translateY(-55%) !important;
+}
+.apexcharts-inner {
+    transform: translate(20%, 7%) !important;
+}
+.container-chart .apexcharts-title-text{
+    transform: translateX(39%) !important;
+}
+.chart-boletos .apexcharts-inner {
+    transform: translate(-4%, 13%) !important;
+}
+.chart-boletos  .apexcharts-legend {
+    display: flex;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    height: 95%;
+   /* flex-wrap: wrap;
+    width: 325px;*
+}
+.chart-boletos .apexcharts-legend-series{
+    margin: 0 5px !important;
+}
+.chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
+    font-size: 10px !important;
+} */
+/* End charts*/
+
+/*
+@media (max-width:1500px) {
+    .apexcharts-canvas, .container-chart{
+        /*  width: 560px !important; *
+        height: 250px !important;
+    }
+    .apexcharts-inner {
+        transform: translate(20%, 5%) !important;
+    }
+    .line-chart{
+       height: 520.7px !important;
+    }
+    .apexcharts-pie{
+        transform: translateX(100px) scale(.66) !important;
+    }
+    .vertical-layout.vertical-menu-modern.menu-collapsed .apexcharts-pie{
+        transform: translateX(100px) scale(.5) !important;
+    }
+    .apexcharts-legend{
+        right: 10px !important;
+        transform: translateY(-59%) !important;
+    }
+    .apexcharts-inner {
+        transform: translate(7%, 9%) !important;
+    }
+    .container-chart .apexcharts-title-text {
+        transform: translateX(28%) !important;
+    }
+}*/
+@media (max-width:700px) {
+    /* .apexcharts-pie {
+         transform: translateX(0px) scale(3.5) !important;
+     }
+      .container-chart .apexcharts-title-text {
+         transform: translateX(15%) !important;
+     }
+     .apexcharts-inner {
+         transform: translate(27%, 6%) !important;
+     }
+     .apexcharts-svg{
+         height: 100%;
+     }
+     .line-chart .apexcharts-svg{
+         height: 500px;
+     }
+     .apexcharts-legend.apx-legend-position-right{
+         justify-content: flex-end !important;
+     }
+     .apexcharts-legend {
+         right: 0% !important;
+         transform: translateY(-1%) !important;
+         display: flex !important;
+         flex-direction: row !important;
+         width: 100%;
+ 
+     }
+     .line-chart tspan {
+         font-size: 9px;
+     }
+ 
+     /* Toltip do gráfico*
+     .apexcharts-tooltip {
+         opacity: 1 !important;
+ 
+         border-radius: 5px;
+         box-shadow: 2px 2px 6px -4px #999;
+         cursor: default;
+         font-size: 14px;
+         left: 62px;
+ 
+         pointer-events: none;
+         position: absolute;
+         top: 20px;
+         display: flex;
+         flex-direction: column;
+         overflow: hidden;
+         white-space: nowrap;
+         z-index: 12;
+         transition: 0.15s ease all;
+     }
+     */
+}

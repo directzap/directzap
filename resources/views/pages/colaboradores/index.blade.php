@@ -22,7 +22,7 @@
         <div class="row">
 
             <div class="col-12 no-padding-mobile">
-                <div class="card">
+                <div class="">
                     <table id="colabs-table">
                         <thead>
                             <tr>

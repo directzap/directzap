@@ -9,7 +9,7 @@
                         <h4 class="text-center"></h4>
                     </div>
                     <div class="col-12 no-padding-mobile">
-                        <div class="card">
+                        <div class="">
                             @if ($alertFm = Session::get('success'))
                                 <div class="row">
                                     <div class="col-md-5">

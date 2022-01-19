@@ -3,9 +3,11 @@
 <div class="content-sales">
     <div class="row ">
         <div class="col-12  text-center">
-            <div class="col-color">
-                <label for="">Comissões/ Valor Liquido</label>
-                <h4>R$ 3.768,28</h4>
+            <div class="card">
+                <div class="card-header justify-content-center flex-column" >
+                    <label for="">Comissões/ Valor Liquido</label>
+                    <h4>R$ 3.768,28</h4>
+                </div>
             </div>
         </div>
     </div>
