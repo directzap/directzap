@@ -57,6 +57,7 @@
                 }
             });
         }
+        //Script pra abrir o modal a primeira vez
         $(document).ready(function() {
             var ls = localStorage.getItem("modal");
             if(!ls){
