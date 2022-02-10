@@ -1,0 +1,77 @@
+version: "3.8"
+services:
+  # micro
+  directzap_micro:
+    build:
+      args:
+        user: melo
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel-app
+    container_name: directzap_server
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - redis
+    networks:
+      - microdirectzap
+
+  # nginx
+  nginx:
+    image: nginx:alpine
+    container_name: directzap_nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - microdirectzap
+
+  # mysql
+  mysql:
+    image: mysql:5.7.22
+    container_name: directzap_mysql
+    restart: unless-stopped
+    ports:
+      - "6601:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+    networks:
+      - microdirectzap
+
+  #phpMyadmin
+  phpMyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: directzap_phpMyadmin
+    restart: unless-stopped
+    ports:
+      - "8091:80"
+    environment:
+      PMA_HOST: directzap_mysql
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - mysql
+    networks:
+      - microdirectzap
+
+  #redis
+  redis:
+    image: redis:latest
+    container_name: directzap_redis
+    networks:
+      - microdirectzap
+
+networks:
+  microdirectzap:
+    driver: bridge

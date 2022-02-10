@@ -273,8 +273,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <label for="">Dias restantes de acesso</label>
-                                <input type="text" class="form-control" id="missing_days" name="missing_days"
-                                    value="25 dias" disabled>
+                                <input type="text" class="form-control" id="missing_days" name="missing_days" disabled>
                             </div>
                         </div>
                         <div class="row">
@@ -321,6 +320,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <input type="hidden" id="user_id_add_collaborator">
                                         <label for="collaborators_liberados">Colaboraderes liberados</label>
                                         <input type="text" class="form-control" disabled id="collaborators_liberados" name="collaborators_liberados" value="8"
                                             disabled>
@@ -329,14 +329,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="add_collaboratos">Adicionar mais Colaboradores</label>
-                                        <input type="number" class="form-control" id="add_collaboratos" name="add_collaboratos" value=""
-                                            >
+                                        <input type="number" min="1" class="form-control" id="add_collaboratos" name="add_collaboratos">
                                     </div>
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                        <button type="button" onclick="addCollaborator()" class="btn btn-primary btn-block">Salvar</button>
                     </div>
                 </form>
             </div>
@@ -360,15 +359,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="collaborators_liberados">Coloque os dias adicionais de acesso</label>
-                                        <input type="number" class="form-control"  id="extend_days" name="extend_days" value=""
-                                            >
+                                        <input type="hidden" name="user_id_extend_day" id="user_id_extend_day">
+                                        <input type="number" class="form-control"  id="extend_days" name="extend_days">
                                     </div>
                                 </div>
-
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+                        <button type="button" onclick="extendDay()" class="btn btn-primary btn-block">Salvar</button>
                     </div>
                 </form>
             </div>
@@ -393,6 +391,8 @@
         }
 
         function showUser(user_id) {
+            $('#user_id_extend_day').val(user_id);
+            $('#user_id_add_collaborator').val(user_id);
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -431,6 +431,56 @@
             });
         }
 
+        function extendDay() {
+            var days = $("#extend_days").val()
+            var user_id = $("#user_id_extend_day").val()
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: 'user-extendDay',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    "days"  : days,
+                    "user_id": user_id,
+                },
+                success: function(response) {
+                    var date_purchase = response.date_purchase.split('-');
+                    date_purchase = date_purchase[2] + '/' + date_purchase[1] + '/' + date_purchase[0];
+
+                    var date_finish = response.date_finish.split('-');
+                    date_finish = date_finish[2] + '/' + date_finish[1] + '/' + date_finish[0];
+
+                    var date1 = new Date(response.date_purchase);
+                    var date2 = new Date(response.date_finish);
+                    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+
+                    $('#missing_days').val(diffDays + ' dias');
+                    $("#extend_days").val('')
+                }
+            });
+        }
+
+        function addCollaborator() {
+            var qtd = $("#add_collaboratos").val()
+            var user_id = $("#user_id_add_collaborator").val()
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: 'user-addNumberCollaborator',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    "qtd"  : qtd,
+                    "user_id": user_id,
+                },
+                success: function(response) {
+                    $('#qtd_collaborators').val(response);
+                    $('#collaborators_liberados').val(response);
+                    $("#add_collaboratos").val('')
+                }
+            });
+        }
 
         //Ativação do checkbox pra tornar adm e lifetiem acount
         $('#turn_adm_check').on('change', function() {

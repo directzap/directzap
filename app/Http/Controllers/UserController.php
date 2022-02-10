@@ -128,4 +128,26 @@ class UserController extends Controller
         }
         return response()->json(true);
     }
+
+    public function extendDay(Request $request)
+    {
+        $days = $request->days;
+        $user = User::find($request->user_id);
+        $finish = date('Y-m-d', strtotime("+{$days} days", strtotime($user->date_finish))); 
+        User::where('id', $request->user_id)->update(['date_finish' => $finish]);
+       
+        $user = User::find($request->user_id);
+        return response()->json($user);
+    }
+
+    public function addNumberCollaborator(Request $request)
+    {
+        $qtd = $request->qtd;
+        $user = User::find($request->user_id);
+        $qtd_collaborator = $user->qtd_collaborators + $qtd; 
+        User::where('id', $request->user_id)->update(['qtd_collaborators' => $qtd_collaborator]);
+       
+        $user = User::find($request->user_id);
+        return response()->json($qtd_collaborator);
+    }
 }

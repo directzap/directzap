@@ -52,7 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('pixel-facebook', [UserController::class, 'pixelFacebook'])->name('user.pixelFacebook');
     Route::post('pixel-gtm', [UserController::class, 'pixelGtm'])->name('user.pixelGtm');
     Route::post('user-active', [UserController::class, 'userActive'])->name('user.active');
-
+    Route::post('user-extendDay', [UserController::class, 'extendDay'])->name('user.extendDay');
+    Route::post('user-addNumberCollaborator', [UserController::class, 'addNumberCollaborator'])->name('user.addNumberCollaborator');
+ 
     Route::resource('faq', FaqController::class);
 
     Route::resource('reset', ResetController::class);
