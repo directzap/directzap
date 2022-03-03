@@ -19,144 +19,49 @@
         <div class="tab-content">
             <div class="tab-pane active" id="tab_msg" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
                 <ul class="list-group">
+                    @foreach ($alerts as $record)
                     <li class="list-group-item">
                         <a class="note-link">
                             <div class="header-note">
                                 <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                    <span class="mr-50 bullet bullet-success bullet-sm"></span> Sucesso
+                                    <h5 class="mb-25">{{ $record->title }}</h5>
+                                    <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>{{ $record->status }}
                                 </div>
                                 <div class="mail-meta-item">
-                                    <span class="mail-date">20/11/2021</span>
+                                    <span class="mail-date">{{ getDateSample($record->created_at) }}</span>
                                 </div>
                             </div>
                             <div class="mail-message">
                                 <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
+                                    {{ $record->message }}
                                 </p>
                             </div>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a class="note-link">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                    <span class="mr-50 bullet bullet-warning bullet-sm"></span> Cuidado
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mail-date">20/11/2021</span>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="note-link">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                    <span class="mr-50 bullet bullet-danger bullet-sm"></span> Atenção
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mail-date">20/11/2021</span>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
 
                 </ul>
             </div>
             <div class="tab-pane " id="tab_updates" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
                 <ul class="list-group">
+                    @foreach ($updates as $record)
                     <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
+                        <a class="note-link">
                             <div class="header-note">
                                 <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-warning bullet-sm"></span>
-                                    <small>Em Andamento</small>
+                                    <h5 class="mb-25">{{ $record->title }}</h5>
+                                    <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>
+                                    <small>{{ $record->status }}</small>
                                 </div>
                             </div>
                             <div class="mail-message">
                                 <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
+                                    {{ $record->message }}
                                 </p>
                             </div>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-success bullet-sm"></span>
-                                    <small>Atualizado</small>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-info bullet-sm"></span>
-                                    <small>Em Breve</small>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
 

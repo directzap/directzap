@@ -6,6 +6,10 @@ function getDateComplete($date)
 {
     return \Carbon\Carbon::parse($date)->format('d/m/Y H:i');
 }
+function getDateSample($date)
+{
+    return \Carbon\Carbon::parse($date)->format('d/m/Y');
+}
 
 function getBoletoType()
 {

@@ -17,6 +17,7 @@ class CreateAlertsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('type');
+            $table->string('status');
             $table->string('message');
             $table->timestamps();
         });

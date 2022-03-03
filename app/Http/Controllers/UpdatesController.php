@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Update;
+use App\Models\UpdateUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UpdatesController extends Controller
@@ -13,7 +16,10 @@ class UpdatesController extends Controller
      */
     public function index()
     {
-        return view('pages.updates.index');
+        $updates = Update::all();
+        return view('pages.updates.index', [
+            'updates' => $updates,
+        ]);
     }
 
     /**
@@ -34,7 +40,29 @@ class UpdatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->update_type == 'success') {
+            $status = 'Em andamento';
+        } else if ($request->update_type == 'danger') {
+            $status = 'Atualizado';
+        } else if ($request->update_type == 'warning') {
+            $statzs = 'Em breve';
+        }
+        $update = Update::create([
+            'title' => $request->update_title,
+            'type' => $request->update_type,
+            'message' => $request->update_message,
+            'status' => $status,
+        ]);
+        $users = User::all();
+
+        foreach ($users as $key => $user) {
+            UpdateUser::create([
+                'update_id' => $update->id,
+                'user_id' => $user->id,
+            ]);
+        }
+
+        return redirect()->back()->with('Success', 'Alerta criado com sucesso');
     }
 
     /**

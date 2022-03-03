@@ -9,73 +9,27 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="list-group">
+                    @foreach ($updates as $update)
                     <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
+                        <a class="note-link" onclick="showModal('{{ $update->title }}', '{{ $update->type }}', '{{ $update->status }}', '{{ $update->message }}')">
                             <div class="header-note">
                                 <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
+                                    <h5 class="mb-25">{{ $update->title }}</h5>
 
                                 </div>
                                 <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-warning bullet-sm"></span>
-                                    <small>Em Andamento</small>
+                                    <span class="mr-50 bullet bullet-{{ $update->type }} bullet-sm"></span>
+                                    <small>{{ $update->status }}</small>
                                 </div>
                             </div>
                             <div class="mail-message">
                                 <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
+                                  {{ $update->message }}
                                 </p>
                             </div>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-success bullet-sm"></span>
-                                    <small>Atualizado</small>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="note-link" data-toggle="modal" data-target="#modal_update">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">Titulo da Menssagem</h5>
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mr-50 bullet bullet-info bullet-sm"></span>
-                                    <small>Em Breve</small>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    Hey John, bah kivu decrete epanorthotic unnotched Argyroneta nonius veratrine preimaginary saunders
-                                    demidolmen Chaldaic allusiveness lorriker unworshipping ribaldish tableman hendiadys outwrest unendeavored
-                                    fulfillment scientifical Pianokoto CheloniaFreudian sperate unchary hyperneurotic phlogiston duodecahedron
-                                    unflown Paguridea catena disrelishable Stygian paleopsychology cantoris phosphoritic disconcord fruited
-                                    inblow somewhatly ilioperoneal forrard palfrey Satyrinae outfreeman melebiose
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -134,14 +88,12 @@
         <div class="modal-body">
             <div class="title-box-modal">
                 <h5>Sobre a Atualização</h5>
-                <div class="mail-meta-item mb-1">
-                    <span class="mr-50 bullet bullet-success bullet-sm"></span>
-                    <small>Status da Atualização</small>
+                <div class="mail-meta-item mb-1" id="about">
+                   
                 </div>
             </div>
 
-            <p class="text-update">
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, error rerum minima ratione repellendus vel fugit fuga ipsum rem, temporibus, ad quasi reprehenderit reiciendis sapiente exercitationem sed voluptate molestias culpa.
+            <p class="text-update" id="text-update">
             </p>
         </div>
         <div class="modal-footer">
@@ -150,4 +102,15 @@
     </div>
     </div>
 </div>
+@endsection
+@section('js')
+<script>
+    function showModal(title, type, status, message) {
+        $('#TituloModalCentralizado').html(title)
+        $('#about').html( '<span class="mr-50 bullet bullet-'+ type +' bullet-sm"></span>' +
+                    '<small>'+ status +'</small>')
+                    $('#text-update').html(message)
+        $('#modal_update').modal('show')
+    }
+</script>
 @endsection

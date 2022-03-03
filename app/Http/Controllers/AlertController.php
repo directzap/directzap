@@ -37,14 +37,23 @@ class AlertController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
 
-        $alert = Alert::create($request->all());
+        if ($request->type == 'success') {
+            $status = 'Sucesso';
+        } else if ($request->type == 'danger') { 
+            $status = 'Cuidado';
+        } else if ($request->type == 'warning') {
+            $status = 'Atenção';
+        }
+        $data['status'] = $status;
+        $alert = Alert::create($data);
         $users = User::all();
 
         foreach ($users as $key => $user) {
             AlertUser::create([
                 'alert_id' => $alert->id,
-                'user_id'  => $user->id
+                'user_id' => $user->id,
             ]);
         }
 

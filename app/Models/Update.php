@@ -11,7 +11,8 @@ class Update extends Model
 
     protected $fillable = [
         'title',
-        'status',
-        'message'
+        'type',
+        'message',
+        'status'
     ];
 }

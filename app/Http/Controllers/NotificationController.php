@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alert;
+use App\Models\Update;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -13,8 +15,12 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //
-        return view('pages.notifications.index');
+        $alerts = Alert::join('alert_users', 'alert_users.alert_id', '=', 'alerts.id')->groupBy('alert_users.alert_id')->get();
+        $updates = Update::join('update_users', 'update_users.update_id', '=', 'updates.id')->groupBy('update_users.update_id')->get();
+        return view('pages.notifications.index',[
+            'alerts' => $alerts,
+            'updates' => $updates,
+        ]);
     }
 
     /**

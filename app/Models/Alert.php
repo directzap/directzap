@@ -12,6 +12,7 @@ class Alert extends Model
     protected $fillable = [
         'title',
         'type',
+        'status',
         'message'
     ];
 }

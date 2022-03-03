@@ -119,7 +119,7 @@
                             <label for="alert_type">Tipo de Alerta</label>
                             <select class="form-control" id="alert_type" name="type">
                                 <option value="danger">Cuidado</option>
-                                <option value="sucess">Sucesso</option>
+                                <option value="success">Sucesso</option>
                                 <option value="warning">Atenção</option>
                             </select>
                         </div>
@@ -149,19 +149,17 @@
                 </div>
 
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('alerts.store') }}">
+                    <form method="POST" action="{{ route('updates.store') }}">
                         @csrf
-
                         <div class="form-group">
                             <label for="title_alert">Título da Atualização</label>
-                            <input type="text" class="form-control" id="title_alert" name="title" placeholder="">
+                            <input type="text" class="form-control" id="title_alert" name="update_title" placeholder="">
                         </div>
-
                         <div class="form-group">
                             <label for="alert_type">Tipo de Atualização</label>
-                            <select class="form-control" id="alert_type" name="type">
+                            <select class="form-control" id="alert_type" name="update_type">
                                 <option value="danger">Atualizado</option>
-                                <option value="sucess">Em Andamento</option>
+                                <option value="success">Em Andamento</option>
                                 <option value="warning">Em Breve</option>
                             </select>
                         </div>
@@ -169,7 +167,7 @@
                         <div class="form-group">
                             <label for="msg_alert">Texto</label>
                             <textarea class="form-control" id="msg_alert" rows="3" placeholder=""
-                                name="message"></textarea>
+                                name="update_message"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Criar Nota</button>

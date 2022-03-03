@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('links/delete-collaborator-link/',[LinksController::class, 'deleteCollaboratorLink'])->name('deleteCollaboratorLink');
 
     Route::resource('alerts', AlertController::class);
+    Route::resource('updates', UpdatesController::class);
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
