@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('singup', SingUpController::class);
 
     Route::resource('sales', SalesController::class);
+    Route::get('store-sales', [SalesController::class, 'storeSales']);
 
     Route::resource('commissions', CommissionsController::class);
 

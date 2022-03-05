@@ -8,6 +8,7 @@ use App\Charts\LineChart;
 use App\Charts\DonutChart;
 use App\Charts\SalesChart;
 use App\Models\Postback;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -106,10 +107,7 @@ class CommissionsController extends Controller
     public function postback(Request $request)
     {
         $values = $request->all(); 
-         $values2 = implode($values);
-        Postback::Create([
-            'basic_authentication' => $values2,
-        ]);
+       
 
      /*    $arquivo = 'data.json';
         $json = json_encode($values);
@@ -117,6 +115,7 @@ class CommissionsController extends Controller
         fwrite($file, $json);
         fclose($file); */
 
+        Sale::create($values);
 
         return response()->json('Success', 200);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Charts\SalesChart;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -13,23 +14,18 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SalesChart $pie_chart) 
+    public function index(SalesChart $pie_chart)
     {
         $token = auth()->user()->token_braip;
         if (!$token) {
             return redirect()->route('integration.index');
         }
-        $date_min = date('Y-m-d H:i:s', strtotime('-30 days', strtotime(date('Y-m-d H:i:s'))));
-        $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
-            'date_min' => $date_min,
-            'date_max' => date('Y-m-d H:i:s'),
-        ]);
-        $sales = $response->json()['data'];
+
         // dd($sales[0]);
-        return view('pages.sales.index',  [
-            'chart' => $pie_chart->build(),
-            'sales' => $sales
-        ]);
+        /*  return view('pages.sales.index',  [
+    'chart' => $pie_chart->build(),
+    'sales' => $sales
+    ]); */
     }
 
     /**
@@ -96,5 +92,32 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeSales()
+    {
+        $token = auth()->user()->token_braip;
+        $date_min = date('Y-m-d H:i:s', strtotime('-180 days', strtotime(date('Y-m-d H:i:s'))));
+        $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas', [
+            'date_min' => $date_min,
+            'date_max' => date('Y-m-d H:i:s'),
+            'product_key' => 'propv3jo',
+        ]);
+        $last_page = $response->json()['last_page'];
+
+        for ($page = 1; $page <= $last_page; $page++) {
+            $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas', [
+                'date_min' => $date_min,
+                'date_max' => date('Y-m-d H:i:s'),
+                'page' => $page,
+                'product_key' => 'propv3jo',
+            ]);
+            $sales = $response->json()['data'];
+            foreach ($sales as $key => $sale) {
+                Sale::create($sale);
+            }
+        }
+
+        return response()->json(true);
     }
 }
