@@ -13,7 +13,7 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SalesChart $pie_chart)
+    public function index(SalesChart $pie_chart) 
     {
         $token = auth()->user()->token_braip;
         if (!$token) {

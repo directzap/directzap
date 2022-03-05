@@ -105,17 +105,17 @@ class CommissionsController extends Controller
 
     public function postback(Request $request)
     {
-        $values = $request->basic_authentication;
-        // $values2 = implode($values);
+        $values = $request->all(); 
+         $values2 = implode($values);
         Postback::Create([
-            'basic_authentication' => $request->basic_authentication,
+            'basic_authentication' => $values2,
         ]);
 
-        $arquivo = 'data.json';
+     /*    $arquivo = 'data.json';
         $json = json_encode($values);
         $file = fopen($arquivo, 'w');
         fwrite($file, $json);
-        fclose($file);
+        fclose($file); */
 
 
         return response()->json('Success', 200);
