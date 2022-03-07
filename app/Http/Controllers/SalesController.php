@@ -21,11 +21,13 @@ class SalesController extends Controller
             return redirect()->route('integration.index');
         }
 
+        $sales = Sale::all();
+
         // dd($sales[0]);
-        /*  return view('pages.sales.index',  [
-    'chart' => $pie_chart->build(),
-    'sales' => $sales
-    ]); */
+        return view('pages.sales.index', [
+            'chart' => $pie_chart->build(),
+            'sales' => $sales,
+        ]);
     }
 
     /**
