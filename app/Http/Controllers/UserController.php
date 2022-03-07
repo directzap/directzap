@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->fill([
             'name'  => $request->name,
             'username'  => $request->username,
-            'avatar'  => $avatar,
+            'avatar'  => $avatar ?? null,
             'company'  => $request->company,
         ]);
 
