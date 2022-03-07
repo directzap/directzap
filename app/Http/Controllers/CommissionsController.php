@@ -9,6 +9,7 @@ use App\Charts\DonutChart;
 use App\Charts\SalesChart;
 use App\Models\Postback;
 use App\Models\Sale;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -109,13 +110,17 @@ class CommissionsController extends Controller
         $values = $request->all(); 
        
 
-     /*    $arquivo = 'data.json';
-        $json = json_encode($values);
-        $file = fopen($arquivo, 'w');
-        fwrite($file, $json);
-        fclose($file); */
 
         Sale::create($values);
+
+        if (isset($request->trans_status) && $request->trans_status == 'Pagamento Aprovado') {
+            $user = User::where('email', $request->cliente_email)->first();
+            $finish = date('Y-m-d', strtotime("+30 days", strtotime($user->date_finish))); 
+            $user->fill([
+                'date_finish' => $finish
+            ]);
+            $user->save();
+        }
 
         return response()->json('Success', 200);
     }
