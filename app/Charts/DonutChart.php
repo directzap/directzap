@@ -2,6 +2,7 @@
 
 namespace App\Charts;
 
+use App\Models\Sale;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class DonutChart
@@ -16,11 +17,21 @@ class DonutChart
     public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
 
+        $sales = Sale::where('trans_payment', 5)->get();
+        $pagamento_aprovado = 0;
+        $pagamento_pendente = 0;
+        foreach ($sales as $key => $sale) {
+            if ($sale['trans_status_code'] == 2) {
+                $pagamento_aprovado++;
+            } else {
+                $pagamento_pendente++;
+            }
+        }
 
         return $this->chart->donutChart()
 
             ->setSubtitle('')
-            ->addData([62.2 , 37.8])
+            ->addData([$pagamento_aprovado, $pagamento_pendente])
             ->setLabels(['Pix Pagos', 'Pix Pendentes']);
     }
 }

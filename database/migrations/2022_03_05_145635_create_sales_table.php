@@ -35,7 +35,7 @@ class CreateSalesTable extends Migration
             $table->string('trans_payment_line')->nullable();
             $table->string('trans_payment_bar_code')->nullable();
             $table->string('trans_payment_url')->nullable();
-            $table->string('trans_payment_date')->nullable();
+            $table->dateTime('trans_payment_date')->nullable();
             $table->integer('trans_installments')->nullable();
             $table->string('trans_qrcode_pix')->nullable();
             $table->string('trans_url_pix')->nullable();

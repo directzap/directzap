@@ -33,7 +33,7 @@
                     <span class="card-subtitle text-muted"></span>
                 </div>
                 <div class="card-body">
-                    {!! $chart2->container() !!}
+                    {!! $chart2->container() !!} 
                 </div>
             </div>
 

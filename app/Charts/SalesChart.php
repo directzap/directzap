@@ -2,8 +2,8 @@
 
 namespace App\Charts;
 
+use App\Models\Sale;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
-use Illuminate\Support\Facades\Http;
 
 class SalesChart
 {
@@ -16,22 +16,15 @@ class SalesChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
+        $date_min = date('Y-m-d H:i:s', strtotime('-90 days', strtotime(date('Y-m-d H:i:s'))));
+        $date_max = date('Y-m-d H:i:s');
+        /* $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
+        'date_min' => $date_min,
+        'date_max' => date('Y-m-d H:i:s'),
+        'payment'  => [1],
+        ]); */
 
-        $token = auth()->user()->token_braip;
-        if (!$token) {
-            return false;
-        }
-        $date_min = date('Y-m-d H:i:s', strtotime('-30 days', strtotime(date('Y-m-d H:i:s'))));
-
-        $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
-            'date_min' => $date_min,
-            'date_max' => date('Y-m-d H:i:s'),
-            'payment'  => [1],
-        ]);
-
-
-
-        $boletos = $response->json()['data'];
+        $boletos = Sale::where('trans_payment', 1)->get();
 
         $aguardando_pagamento = 0;
         $pagamento_aprovado = 0;
@@ -70,9 +63,8 @@ class SalesChart
             }
         }
 
-
         $set_labels = ['Aguardando Pagamento', 'Pagamento Aprovado', 'Cancelada', 'Chargeback', 'Devolvida', 'Em Análise', 'Estorno Pendente', 'Em Processamento', 'Parcialmente Pago', 'Pagamento Atrasado'];
-     //  $set_labels = ['Teste 1', 'Teste 2'];
+        //  $set_labels = ['Teste 1', 'Teste 2'];
         $set_values = [$aguardando_pagamento, $pagamento_aprovado, $cancelada, $chargeback, $devolvida, $em_analise, $estorno_pendente, $em_processamento, $parcialmente_pago, $pagamento_atrasado];
         return $this->chart->pieChart()
 
