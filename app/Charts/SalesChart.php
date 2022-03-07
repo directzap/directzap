@@ -16,14 +16,6 @@ class SalesChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
-        $date_min = date('Y-m-d H:i:s', strtotime('-90 days', strtotime(date('Y-m-d H:i:s'))));
-        $date_max = date('Y-m-d H:i:s');
-        /* $response = Http::withToken($token)->get('https://ev.braip.com/api/vendas',  [
-        'date_min' => $date_min,
-        'date_max' => date('Y-m-d H:i:s'),
-        'payment'  => [1],
-        ]); */
-
         $boletos = Sale::where('trans_payment', 1)->get();
 
         $aguardando_pagamento = 0;
