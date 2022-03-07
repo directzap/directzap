@@ -34,8 +34,7 @@
                         <!--<span class="user-status">Admin</span>-->
                     </div>
                     <span class="avatar">
-                           <img class="round"src="{{ asset('assets/images/profile/userPlaceholder.png') }}"
-                            alt="avatar" height="40" width="40">
+                        <x-img-profile></x-img-profile>
                         {{-- <img class="round" src="@if ($user->avatar)
                          {{ asset("uploads/avatars/$user->avatar") }}
                          @else
