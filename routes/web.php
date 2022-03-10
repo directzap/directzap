@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::post('updatePass/{id}', [UserController::class, 'updatatePass'])->name('user.updatePass');
     Route::post('pixel-facebook', [UserController::class, 'pixelFacebook'])->name('user.pixelFacebook');
+    Route::post('store-phone', [UserController::class, 'storePhone'])->name('user.storePhone');
     Route::post('pixel-gtm', [UserController::class, 'pixelGtm'])->name('user.pixelGtm');
     Route::post('user-active', [UserController::class, 'userActive'])->name('user.active');
     Route::post('user-extendDay', [UserController::class, 'extendDay'])->name('user.extendDay');

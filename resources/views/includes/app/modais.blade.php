@@ -13,7 +13,7 @@
 
              <div class="modal-body">
 
-                 <form method="POST" action="">
+                 <form method="POST" action="{{ route('user.storePhone') }}">
                      @csrf
                      <div class="form-group">
                          <label for="phone">Telefone (whatsapp)</label>

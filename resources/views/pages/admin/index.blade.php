@@ -220,7 +220,7 @@
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="" class="mt-2">
-                        @csrf
+                        @csrf 
                         <div class="row mb-3">
                           <!--  <div class="col-lg-4">
                                 <div class="custom-control custom-switch custom-control-inline">
