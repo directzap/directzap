@@ -7,15 +7,20 @@
             </div>
             <div class="col-md-12">
                 <div class="row text-right mb-2">
-                    <div class="col-md-12">
+                    <div class="col-md-12 group-btns-flex">
 
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#make_update_note">
-                            Criar Nota de Atualização
+                        <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#make_update_note">
+                            <i class="icon-btn color-white" data-feather='plus-circle'></i> <span class="pc-only">Add Notas de</span> Atualização
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-outline-primary " data-toggle="modal" data-target="#notes_update_modal">
+                            <i class="icon-btn color-white" data-feather='eye'></i> <span class="pc-only">Ver Notas de </span> Atualização
                         </button>
 
-
-                        <button type="button" class="btn btn-primary ml-2 mr-2" data-toggle="modal" data-target="#make_alert">
-                            Criar Alerta para usuários
+                        <button type="button" class="btn btn-outline-primary " data-toggle="modal" data-target="#make_alert">
+                            <i class="icon-btn color-white" data-feather='plus-circle'></i> <span class="pc-only">Add </span> Alertas
+                        </button>
+                        <button type="button" class="btn btn-outline-primary  " data-toggle="modal" data-target="#alerts_modal">
+                            <i class="icon-btn color-white" data-feather='eye'></i> <span class="pc-only">Ver</span> Alertas
                         </button>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#active_account">
                             Ativar Conta
@@ -24,77 +29,81 @@
                 </div>
             </div>
             <div class="col-12 no-padding-mobile">
-                <div class="card">
-                    <table id="admin_table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <h4 class="title-table">
-                                        Nome Completo
-                                    </h4>
-                                </th>
-                                <th>
-                                    <h4 class="title-table">
-                                        Email
-                                    </h4>
-                                </th>
-                                <th>
-                                    <h4 class="title-table">
-                                        Telefone
-                                    </h4>
-                                </th>
-                                <th class="options" style="max-width: 180px !important">
-                                    <h4 class="title-table">
-                                        Opções
-                                    </h4>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="body_table_admin">
-                            @foreach ($users as $user)
-                                <tr style="width:100%;" id="user{{ $user->id }}">
-                                    <td>
-                                        <h6 class="content-text">
-                                            {{ $user->name }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="content-text">
-                                            {{ $user->email }}
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="content-text">
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <div class="row last-td">
-                                            <!-- <div class="col-md-4 col-flex">-->
-                                            <button class="btn btn-warning rounded-circle btn-icon" data-toggle="tooltip"
-                                                data-placement="top" title="" data-original-title="Deletar Colaborador"
-                                                data-id="" onclick="deleteUser({{ $user->id }})">
-                                                <i data-feather='trash-2'></i>
-                                            </button>
-                                            <!--</div>-->
-                                            <!-- <div class="col-md-4 col-flex">-->
-                                            <button class="btn btn-info rounded-circle btn-icon"
-                                                data-target="#modal_adm_info" data-toggle="modal" data-placement="top"
-                                                title="" data-original-title="Ver Colaborador" data-id=""
-                                                onclick="showUser({{ $user->id }})">
-                                                <i data-feather='info'></i>
-                                            </button>
-                                            <!--</div>-->
-                                        </div>
-                                    </td>
+                <div class="table-responsive-sm">
+                    <div class="card ">
+                        <table id="admin_table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h4 class="title-table">
+                                            Nome Completo
+                                        </h4>
+                                    </th>
+                                    <th>
+                                        <h4 class="title-table">
+                                            Email
+                                        </h4>
+                                    </th>
+                                    <th>
+                                        <h4 class="title-table">
+                                            Telefone
+                                        </h4>
+                                    </th>
+                                    <th class="options" style="max-width: 180px !important">
+                                        <h4 class="title-table">
+                                            Opções
+                                        </h4>
+                                    </th>
                                 </tr>
-                            @endforeach
-
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody id="body_table_admin">
+                                @foreach ($users as $user)
+                                    <tr style="width:100%;" id="user{{ $user->id }}">
+                                        <td>
+                                            <h6 class="content-text">
+                                                {{ $user->name }}
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="content-text">
+                                                {{ $user->email }}
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <h6 class="content-text">
+                                            </h6>
+                                        </td>
+                                        <td>
+                                            <div class="row last-td">
+                                                <!-- <div class="col-md-4 col-flex">-->
+                                                <button class="btn btn-warning rounded-circle btn-icon" data-toggle="tooltip"
+                                                    data-placement="top" title="" data-original-title="Deletar Colaborador"
+                                                    data-id="" onclick="deleteUser({{ $user->id }})">
+                                                    <i data-feather='trash-2'></i>
+                                                </button>
+                                                <!--</div>-->
+                                                <!-- <div class="col-md-4 col-flex">-->
+                                                <button class="btn btn-info rounded-circle btn-icon"
+                                                    data-target="#modal_adm_info" data-toggle="modal" data-placement="top"
+                                                    title="" data-original-title="Ver Colaborador" data-id=""
+                                                    onclick="showUser({{ $user->id }})">
+                                                    <i data-feather='info'></i>
+                                                </button>
+                                                <!--</div>-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+    
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </section>
+    
     <div class="modal fade" id="make_alert" tabindex="-1" aria-labelledby="links" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -137,6 +146,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="make_update_note" tabindex="-1" aria-labelledby="links" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -178,7 +188,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="active_account" tabindex="-1" aria-labelledby="active_account" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -205,8 +214,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade" id="modal_adm_info" tabindex="-1" aria-labelledby="modal_adm_info" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -365,6 +372,228 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" onclick="extendDay()" class="btn btn-primary btn-block">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="notes_update_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ver Notas de Atualizações</h5>
+    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="" class="mt-2">
+                    @csrf
+                    <div class="modal-body">
+                        <h4>Notas de Atualizações</h4>
+                        <section id="more_info_datatable">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="text-center"></h4>
+                                </div>
+                                <div class="col-12 no-padding-mobile">
+                                    <div class="card">
+                                        @if ($alertFm = Session::get('success'))
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="alert alert-success">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>{{ $alertFm }}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if ($alertFm = Session::get('error'))
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="alert alert-danger">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>{{ $alertFm }}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <table id="more_info_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                            Titulo
+                                                        </h4>
+                                                    </th>
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                           Tipo
+                                                        </h4>
+                                                    </th>
+                                                    <th>
+                                                        <h4 class="title-table" style="max-width: 180px">
+                                                            Menssagem
+                                                        </h4>
+                                                    </th>
+                                                 
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                            Opções
+                                                        </h4>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="">
+                                                <tr style="width:100%;" >
+                                                    <td>
+                                                        <h6 class="content-text">
+                                                           Titulo da Atualização
+                                                        </h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="content-text">
+                                                           Tipo da Atualização
+                                                        </h6>
+                                                    </td>
+                                                  
+                                                    <td>
+                                                        <div class="mail-message colum-resize" >
+                                                            <h6 class="text-truncate">
+                                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A harum impedit iste dolores laborum voluptas, expedita recusandae similique ratione amet dolorem, facere ex eius dicta facilis. Obcaecati qui est numquam.
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="" style="min-width: 100px">
+                                                        <div class="row last-td">
+                                                            <button class="btn btn-danger rounded-circle btn-icon" data-toggle="tooltip"
+                                                            data-placement="top" title="Deletar Nota" data-original-title="Deletar Nota" data-id="">
+                                                            <i data-feather='trash-2'></i>
+                                                        </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="alerts_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ver Alertas</h5>
+    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="" class="mt-2">
+                    @csrf
+                    <div class="modal-body">
+                        <h4>Alertas</h4>
+                        <section id="more_info_datatable">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="text-center"></h4>
+                                </div>
+                                <div class="col-12 no-padding-mobile">
+                                    <div class="card">
+                                        @if ($alertFm = Session::get('success'))
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="alert alert-success">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>{{ $alertFm }}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if ($alertFm = Session::get('error'))
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="alert alert-danger">
+                                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                                        <strong>{{ $alertFm }}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        <table id="more_info_table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                            Titulo
+                                                        </h4>
+                                                    </th>
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                           Tipo
+                                                        </h4>
+                                                    </th>
+                                                    <th>
+                                                        <h4 class="title-table" style="max-width: 180px">
+                                                            Menssagem
+                                                        </h4>
+                                                    </th>
+                                                 
+                                                    <th>
+                                                        <h4 class="title-table">
+                                                            Opções
+                                                        </h4>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="">
+                                                <tr style="width:100%;" >
+                                                    <td>
+                                                        <h6 class="content-text">
+                                                           Titulo da Alerta
+                                                        </h6>
+                                                    </td>
+                                                    <td>
+                                                        <h6 class="content-text">
+                                                           Tipo de Alerta
+                                                        </h6>
+                                                    </td>
+                                                  
+                                                    <td>
+                                                        <div class="mail-message colum-resize" >
+                                                            <h6 class="text-truncate">
+                                                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. A harum impedit iste dolores laborum voluptas, expedita recusandae similique ratione amet dolorem, facere ex eius dicta facilis. Obcaecati qui est numquam.
+                                                            </h6>
+                                                        </div>
+                                                    </td>
+                                                    <td class="" style="min-width: 100px">
+                                                        <div class="row last-td">
+                                                            <button class="btn btn-danger rounded-circle btn-icon" data-toggle="tooltip"
+                                                            data-placement="top" title="Deletar Nota" data-original-title="Deletar Nota" data-id="">
+                                                            <i data-feather='trash-2'></i>
+                                                        </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>           
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer">
+    
                     </div>
                 </form>
             </div>
