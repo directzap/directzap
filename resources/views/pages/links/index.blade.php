@@ -53,7 +53,7 @@
                         </thead>
                         <tbody id="body_table_links">
                             @foreach ($links as $link)
-
+ 
                                 <tr style="width:100%;">
                                     <td>
                                         <h6 class="content-text">
@@ -243,30 +243,35 @@
                 dataType: "json",
                 url: 'links/show-add-collaborators/' + id,
                 success: function(collaborators) {
+                    console.log(collaborators);
                     $('#add_colab_link_body').html('');
                     $.each(collaborators, function(index, collaborator) {
+                        var name_links = '';
+                    $.each(collaborator.links, function(index_link, link) {
+                        name_links += link.name + '<br/>'
+                    });
+                        var links = collaborator.links.join(', ')
                         $('#add_colab_link_body').append(' <tr style="width:100%;">' +
                             '<td class="">' +
                             '<div class="d-flex justify-content-center">' +
                             '<div class="custom-control custom-checkbox">' +
                             '<input type="checkbox" class="custom-control-input" id="customCheck' +
-                            index + '" name="collaborator[]" value="' + collaborator.id + '"">' +
+                            index + '" name="collaborator[]" value="' + collaborator.colaborator.id + '"">' +
                             '<label class="custom-control-label content-text" for="customCheck' +
                             index + '">' +
-                            collaborator.name +
+                            collaborator.colaborator.name +
                             ' </label>' +
                             ' </div>' +
                             '   </div>' +
                             ' </td>' +
                             ' <td>' +
                             '  <h6 class="content-text">' +
-                            collaborator.qtd_link +
+                            collaborator.colaborator.qtd_link +
                             '  </h6>' +
                             '  </td>' +
                             ' <td>' +
                             '   <h6 class="content-text">' +
-                            '  <span> Bruno TikTok</span>' +
-                            ' <span>Faceads</span>' +
+                            '  <span>'+ name_links +'</span>' +
                             '   </h6>' +
                             '  </td>' +
                             '</tr>')
@@ -283,7 +288,7 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: 'links/collaborators-link/' + id,
+                url: 'links/collaborators-link/' + id, 
                 success: function(collaborators) {
                     console.log(name);
                     $('#title-link').html('Aqui estão o(s) colaborador(es) do link ' + name);

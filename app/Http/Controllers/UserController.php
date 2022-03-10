@@ -30,6 +30,18 @@ class UserController extends Controller
         //
     }
 
+    public function storePhone(Request $request)
+    {
+        $user = User::where('id', auth()->user()->id)->first();
+        $user->fill([
+            'phone'  => $request->phone,
+        ]);
+
+        $user->save();
+
+        return redirect()->back();
+    }
+
     public function show($id)
     {
         $user = User::find($id);

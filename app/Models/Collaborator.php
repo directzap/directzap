@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Collaborator extends Model
 {
@@ -18,4 +19,9 @@ class Collaborator extends Model
         'users_id',
         'qtd_link'
     ];
+
+    public function links()
+    {
+        return $this->BelongsToMany(Link::class);
+    }
 }

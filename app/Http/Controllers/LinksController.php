@@ -115,9 +115,18 @@ class LinksController extends Controller
         foreach ($links as $key => $link) {
             $remove_collaborators[] = $link->collaborator_id;
         }
-        $collaborators = Collaborator::where('users_id', auth()->user()->id)
+        $records = Collaborator::where('users_id', auth()->user()->id)
             ->whereNotIn('id', $remove_collaborators)
             ->get();
+
+
+        $collaborators = [];
+        foreach ($records as $key => $record) {
+            $collaborators[$key]['colaborator'] = $record;
+            $links = Link::join('collaborator_link', 'collaborator_link.link_id', '=', 'links.id')
+            ->where('collaborator_link.collaborator_id', $record->id)->get();
+            $collaborators[$key]['links'] = $links;
+        }
         return response()->json($collaborators);
     }
 
