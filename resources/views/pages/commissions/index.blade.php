@@ -68,8 +68,8 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="table-responsive">
-                                <table id="conversion_datatable">
+                            <div class="table-responsive-sm">
+                                <table class="w-100" id="conversion_datatable">
                                     <thead>
                                         <tr>
                                             <th>
