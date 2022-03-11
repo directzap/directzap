@@ -5,67 +5,75 @@
         <h1>Notificações</h1>
     </div>
     <div class="nav-vertical">
-        <ul class="nav nav-tabs nav-left flex-column" role="tablist" >
-            <li class="nav-item">
-                <a class="nav-link active" id="baseVerticalLeft-tab1" data-toggle="tab" aria-controls="tabVerticalLeft1" href="#tab_msg" role="tab" aria-selected="true">
-                    <i data-feather='mail'></i> Messagens
-                </a>
-                <a class="nav-link " id="baseVerticalLeft-tab1" data-toggle="tab" aria-controls="tabVerticalLeft1" href="#tab_updates" role="tab" aria-selected="true">
-                    <i data-feather='upload-cloud'></i> Notas de atualizações
-                </a>
-            </li>
-
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_msg" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
-                <ul class="list-group">
-                    @foreach ($alerts as $record)
-                    <li class="list-group-item">
-                        <a class="note-link">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">{{ $record->title }}</h5>
-                                    <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>{{ $record->status }}
-                                </div>
-                                <div class="mail-meta-item">
-                                    <span class="mail-date">{{ getDateSample($record->created_at) }}</span>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    {{ $record->message }}
-                                </p>
-                            </div>
+        <div class="row justify-content-center">
+            <div class="col-md-2 col-11">
+                <ul class="nav nav-tabs nav-left flex-column" role="tablist" >
+                    <li class="nav-item">
+                        <a class="nav-link active" id="baseVerticalLeft-tab1" data-toggle="tab" aria-controls="tabVerticalLeft1" href="#tab_msg" role="tab" aria-selected="true">
+                            <i data-feather='mail'></i> Messagens
+                        </a>
+                        <a class="nav-link " id="baseVerticalLeft-tab1" data-toggle="tab" aria-controls="tabVerticalLeft1" href="#tab_updates" role="tab" aria-selected="true">
+                            <i data-feather='upload-cloud'></i> Notas de atualizações
                         </a>
                     </li>
-                    @endforeach
-
+        
                 </ul>
             </div>
-            <div class="tab-pane " id="tab_updates" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
-                <ul class="list-group">
-                    @foreach ($updates as $record)
-                    <li class="list-group-item">
-                        <a class="note-link">
-                            <div class="header-note">
-                                <div class="mail-items">
-                                    <h5 class="mb-25">{{ $record->title }}</h5>
-                                    <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>
-                                    <small>{{ $record->status }}</small>
-                                </div>
-                            </div>
-                            <div class="mail-message">
-                                <p class="text-truncate mb-0">
-                                    {{ $record->message }}
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
+            <div class="col-md-10 col-11">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_msg" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
+                        <ul class="list-group">
+                            @foreach ($alerts as $record)
+                            <li class="list-group-item">
+                                <a class="note-link">
+                                    <div class="header-note">
+                                        <div class="mail-items">
+                                            <h5 class="mb-25">{{ $record->title }}</h5>
+                                            <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>{{ $record->status }}
+                                        </div>
+                                        <div class="mail-meta-item">
+                                            <span class="mail-date">{{ getDateSample($record->created_at) }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="mail-message">
+                                        <p class="text-truncate mb-0">
+                                            {{ $record->message }}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            @endforeach
+        
+                        </ul>
+                    </div>
+                    <div class="tab-pane " id="tab_updates" role="tabpanel" aria-labelledby="baseVerticalLeft-tab1">
+                        <ul class="list-group">
+                            @foreach ($updates as $record)
+                            <li class="list-group-item">
+                                <a class="note-link">
+                                    <div class="header-note">
+                                        <div class="mail-items">
+                                            <h5 class="mb-25">{{ $record->title }}</h5>
+                                            <span class="mr-50 bullet bullet-{{ $record->type }} bullet-sm"></span>
+                                            <small>{{ $record->status }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="mail-message">
+                                        <p class="text-truncate mb-0">
+                                            {{ $record->message }}
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+        
+                </div>
             </div>
-
         </div>
+      
+       
     </div>
 </div>
 
