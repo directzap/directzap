@@ -584,26 +584,8 @@ tbody {
     transform: translateX(-50%) translate(-10px, -2px) rotate(0) scale(1);
   }
 }
-/* Charts*
-.apexcharts-pie{
-    transform: translateX(100px) scale(.46) !important;
-}
-.apexcharts-canvas, .container-chart, foreignObject{
-  /*  width: 560px !important; *
-    height: 282.7px !important;
-
-}
-.apexcharts-legend.apx-legend-position-right{
-    justify-content: center !important;
-    align-items: flex-start !important;
-}
- .line-chart{
-    height: 520.7px !important;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.1) !important;
-    border-radius: 15px;
-}
-
+/* Charts*/
+/*
 text{
     fill: rgb(255, 255, 255) !important;
     transform: translateX(22%);
@@ -622,35 +604,45 @@ tspan{
     padding: 15px;
     border-radius: 15px;
 }
+*/
+.apexcharts-legend {
+  /*  position: absolute;
+    left: 0 !important;
+    top: inherit !important;
+    right: inherit !important;
+    bottom: 0; */
+  height: 100%;
+  right: 80px !important;
+  right: 0px !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  flex-direction: column !important;
+}
+.apexcharts-legend .apexcharts-legend-series {
+  margin: 5px;
+}
+.apexcharts-legend .apexcharts-legend-text {
+  font-size: 18px;
+}
 
-.apexcharts-legend{
-    top: 50% !important;
-    right: 10% !important;
-    transform: translateY(-55%) !important;
-}
 .apexcharts-inner {
-    transform: translate(20%, 7%) !important;
+  transform: translate(0%, 7%) !important;
 }
+
+/*
 .container-chart .apexcharts-title-text{
     transform: translateX(39%) !important;
 }
 .chart-boletos .apexcharts-inner {
     transform: translate(-4%, 13%) !important;
 }
-.chart-boletos  .apexcharts-legend {
-    display: flex;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    height: 95%;
-   /* flex-wrap: wrap;
-    width: 325px;*
-}
-.chart-boletos .apexcharts-legend-series{
-    margin: 0 5px !important;
-}
+
 .chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
-    font-size: 10px !important;
-} */
+   // font-size: 18px !important;
+} 
 /* End charts*/
 /*
 @media (max-width:1500px) {

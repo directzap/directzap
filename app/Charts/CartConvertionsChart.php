@@ -14,7 +14,7 @@ class CartConvertionsChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\PieChart
+    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
     {
 
         $boletos = Sale::where('trans_payment', 2)->get();
@@ -112,7 +112,7 @@ class CartConvertionsChart
         //  $set_labels = ['Teste 1', 'Teste 2'];
       //  $set_values = [$aguardando_pagamento, $pagamento_aprovado, $cancelada, $chargeback, $devolvida, $em_analise, $estorno_pendente, $em_processamento, $parcialmente_pago, $pagamento_atrasado];
        
-        return $this->chart->pieChart()
+        return $this->chart->donutChart()
         ->addData($set_values)
         ->setLabels($set_labels);
     }
