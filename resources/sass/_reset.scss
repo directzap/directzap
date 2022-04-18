@@ -81,6 +81,18 @@ body::-webkit-scrollbar-thumb {
     transition: all .3s ease-in-out;
 }
 
+.nav {
+    .avatar{
+       
+        img{
+          
+            object-fit: cover;
+            object-position: center;
+          
+        }
+    }
+}
+
 @media (max-width:700px) {
     .col-color{
         padding: 10px 5px !important;

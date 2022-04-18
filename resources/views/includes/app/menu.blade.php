@@ -51,7 +51,7 @@
                     </li>
                     <li>
                         <button type="button" class="btn btn-primary btn-block btn-sidebar" data-toggle="modal"
-                            data-target="#gerarCod" onclick="showGerarCod()">
+                            data-target="#gerarCod" onclick="showAddPixelGtm()">
                             <!--<i class="icon-sidebar fas fa-code"></i>-->
                             <i class="icon-sidebar" data-feather='code'></i>
                             <span class="name-sidebar">Pixel GTM</span>
@@ -90,7 +90,7 @@
                 <i class="icon-sidebar" data-feather='copy'></i>
                 <span class="name-sidebar">Copiar Link precell</span>
             </button>
-            <a href="{{ route('updates.index') }}" class="{{ Route::currentRouteNamed('integration.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar ">
+            <a href="{{ route('updates.index') }}" class="{{ Route::currentRouteNamed('updates.index') ? 'active' : '' }} btn btn-primary btn-block btn-sidebar ">
                 <i class="icon-sidebar" data-feather='upload-cloud'></i>
                 <span class="name-sidebar">Atualizações</span>
             </a>

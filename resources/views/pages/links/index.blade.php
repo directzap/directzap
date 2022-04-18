@@ -18,11 +18,11 @@
             <div class="col-md-4">
                 <h4>Lista de Links</h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-6">
                 <input type="text" class="form-control" id="link_limit" name="link_limit" placeholder=""
                     value="Limite de links: {{ auth()->user()->qtd_links }}" disabled>
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-4 col-6 text-right">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register_link">
                     Cadastrar Link
                 </button>
@@ -67,13 +67,12 @@
                                     </td>
                                     <td class="">
                                         <div class="row last-td">
-
-                                            <!-- <div class="col-md-4 col-flex">-->
-                                            <button class="btn btn-danger rounded-circle btn-icon" data-toggle="tooltip"
-                                                data-placement="top" title="" data-original-title="Deletar Link" data-id=""
-                                                onclick="deletelink({{ $link->id }})">
-                                                <i data-feather='trash-2'></i>
+                                            <button class="btn btn-secondary rounded-circle btn-icon" data-placement="top"
+                                                title="Copiar Link" data-original-title="Copiar Link" data-id="">
+                                                <i data-feather='copy'></i>
                                             </button>
+                                            <!-- <div class="col-md-4 col-flex">-->
+                                           
                                             <!--</div>-->
                                             <!-- <div class="col-md-4 col-flex">-->
                                             <button class="btn btn-success rounded-circle btn-icon"
@@ -82,12 +81,18 @@
                                                 onclick="showAddCollaborators({{ $link->id }})">
                                                 <i data-feather='plus-circle'></i>
                                             </button>
+                                            <button class="btn btn-danger rounded-circle btn-icon" data-toggle="tooltip"
+                                                data-placement="top" title="" data-original-title="Deletar Link" data-id=""
+                                                onclick="deletelink({{ $link->id }})">
+                                                <i data-feather='trash-2'></i>
+                                            </button>
                                             <button class="btn btn-info rounded-circle btn-icon"
                                                 data-target="#info_colab_link" data-toggle="modal" data-placement="top"
                                                 title="" data-original-title="Info Colaborador ao Link" data-id=""
                                                 onclick="collaboratoresLink('{{ $link->name }}', {{ $link->id }})">
                                                 <i data-feather='info'></i>
                                             </button>
+                                           
                                             <!--</div>-->
                                         </div>
                                     </td>

@@ -1,0 +1,21 @@
+.btn{
+    display: flex;
+  //  justify-content: center;
+    align-items: center;
+    .icon-btn{
+        margin-right: 3px;
+    }
+}
+.media{
+    position: relative;
+}
+.btn-absolute-media{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    .icon{
+       // color: red !important;
+    }
+}

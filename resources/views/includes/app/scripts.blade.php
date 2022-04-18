@@ -11,6 +11,9 @@
     function showAddPixel() {
         $('#pixelModal').modal('show');
     }
+    function showAddPixelGtm() {
+        $('#pixelGtmModal').modal('show');
+    }
 </script>
 
 <!-- Facebook Pixel Code -->
@@ -96,11 +99,38 @@
 <script>
     $(document).ready(function() {
         $.noConflict();
-        $('#colabs-table').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
-            }
-        }).fnDestroy();
+        if (window.matchMedia('screen and (max-width: 768px)').matches){
+            jQuery("resultados por página").text("");
+            $('#colabs-table').DataTable({
+                language: {
+                    search: "_INPUT_",
+                    search: "Pexquise",
+                    searchPlaceholder: "Pesquisar...",
+                  //  "searchPlaceholder": "Pesquisar...",
+                    url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
+                },
+                "oLanguage": { "sSearch": "" },
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                
+            }).fnDestroy();
+        } else{
+            $('#colabs-table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
+                },
+                "aLengthMenu": [[10, 25, 50, -1], [ 10, 25, 50, "All"]],
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                
+            }).fnDestroy();
+        }
+        
         $('#admin_table').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
@@ -115,6 +145,12 @@
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
             }
+        });
+        $('#conversion_datatable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
+            },
+            responsive: true,
         });
     });
 </script>

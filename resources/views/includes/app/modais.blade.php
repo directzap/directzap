@@ -81,6 +81,7 @@
  </div>
  --}}
 
+ <!-- Pixel Facebook -->
  <div class="modal fade" id="pixelModal" tabindex="-1" aria-labelledby="PixelModal" aria-hidden="true">
      <div class="modal-dialog modal-dialog-centered ">
          <div class="modal-content">
@@ -101,6 +102,41 @@
 
                      <div class="form-group">
                          <p class="p-1">Insira abaixo seu Pixel</p>
+
+                         <input type="number" class="form-control" id="pixel_facebook" name="pixel_facebook"
+                             placeholder="Ex: 1282707308773467" value="{{ auth()->user()->pixel_facebook }}" required>
+                     </div>
+
+                     <div class="modal-footer">
+                         <button type="button" onclick="salvarPixelFacebook()" class="btn btn-primary btn-block">Salvar</button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <!-- Pixel GTM -->
+ <div class="modal fade" id="pixelGtmModal" tabindex="-1" aria-labelledby="PixelModal" aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered ">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="configModal">
+                     Adicionar Pixel GTM
+                 </h5>
+
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+
+             <div class="modal-body">
+                 <div id="mensagem-facebook"></div>
+                 <form method="post" action="">
+                     @csrf
+
+                     <div class="form-group">
+                         <p class="p-1">Insira abaixo seu Pixel GTM</p>
 
                          <input type="number" class="form-control" id="pixel_facebook" name="pixel_facebook"
                              placeholder="Ex: 1282707308773467" value="{{ auth()->user()->pixel_facebook }}" required>
@@ -274,7 +310,7 @@
 </div>
 
  <div class="modal fade " id="info_compra_modal" tabindex="-1" aria-labelledby="add_colab_modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="">Informação da compra</h5>
@@ -319,41 +355,25 @@
                                             <tr>
                                                 <th>
                                                     <h4 class="title-table">
-                                                        Data
+                                                        Valor
                                                     </h4>
                                                 </th>
                                                 <th>
                                                     <h4 class="title-table">
-                                                       Afiliação
+                                                        Comissão
                                                     </h4>
                                                 </th>
                                                 <th>
                                                     <h4 class="title-table">
-                                                        Status
+                                                        Forma de pagamento
                                                     </h4>
                                                 </th>
                                                 <th>
                                                     <h4 class="title-table">
-                                                        Plano
+                                                        Código da venda
                                                     </h4>
                                                 </th>
 
-                                                <th>
-                                                    <h4 class="title-table">
-                                                        Produto
-                                                    </h4>
-                                                </th>
-                                                <!--
-                                                <th>
-                                                    <h4 class="title-table">
-                                                        Cliente
-                                                    </h4>
-                                                </th>-->
-                                                <th>
-                                                    <h4 class="title-table">
-                                                        Opções
-                                                    </h4>
-                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody id="body_table_colabs">

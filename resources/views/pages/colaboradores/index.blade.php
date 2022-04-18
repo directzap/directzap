@@ -8,15 +8,16 @@
             </div>
         </div>
     </div>
-    <div class="row text-right">
+    <div class="row text-right mb-lg-2">
         <div class="col-md-4 ml-auto">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_colaboradores"
                 onclick="addColaborador()">
-                Adicionar colaborador
+                Add colaborador
             </button>
         </div>
     </div>
 
+   
     <!-- Basic table -->
     <section id="multilingual-datatable">
         <div class="row">

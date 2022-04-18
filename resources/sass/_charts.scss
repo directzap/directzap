@@ -1,23 +1,32 @@
-/* Charts*
+/* Charts*/
 .apexcharts-pie{
-    transform: translateX(100px) scale(.46) !important;
+   // transform: translateX(100px) scale(.46) !important;
 }
-.apexcharts-canvas, .container-chart, foreignObject{
-  /*  width: 560px !important; *
-    height: 282.7px !important;
+.apexcharts-canvas{
+  //  max-width: 360px !important;
+    //max-width: 600px !important;
+ //  height: 100% !important;
+   // width: 450px !important;
+  
+    //height: 350px !important;
 
 }
-.apexcharts-legend.apx-legend-position-right{
-    justify-content: center !important;
-    align-items: flex-start !important;
+.container-chart{
+
 }
- .line-chart{
-    height: 520.7px !important;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.1) !important;
-    border-radius: 15px;
+.apexcharts-inner{
+  //  width: 543px !important;
+  //  height: 312px !important;
+
+}
+.apexcharts-canvas svg, foreignObject{
+  //  width: 543px !important;
+  //  width: 100% !important;
+  //  height: 312px !important;
+  //  height: 100% !important;
 }
 
+/*
 text{
     fill: rgb(255, 255, 255) !important;
     transform: translateX(22%);
@@ -36,35 +45,47 @@ tspan{
     padding: 15px;
     border-radius: 15px;
 }
-
+*/
 .apexcharts-legend{
+  /*  position: absolute;
+    left: 0 !important;
+    top: inherit !important;
+    right: inherit !important;
+    bottom: 0; */
+   // width: 100%;
+    height: 100%;
+    right: 80px !important;
+    right: 0px !important;
     top: 50% !important;
-    right: 10% !important;
-    transform: translateY(-55%) !important;
+    //transform: translate(-50%, -50%);
+    transform: translateY(-50%);
+    display: flex !important;
+    //display: block !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    
+    .apexcharts-legend-series{
+        margin: 5px;
+    }
+    .apexcharts-legend-text{
+        font-size: 18px;
+    }
 }
+
 .apexcharts-inner {
-    transform: translate(20%, 7%) !important;
-}
+    transform: translate(0%, 7%) !important;
+}/*
 .container-chart .apexcharts-title-text{
     transform: translateX(39%) !important;
 }
 .chart-boletos .apexcharts-inner {
     transform: translate(-4%, 13%) !important;
 }
-.chart-boletos  .apexcharts-legend {
-    display: flex;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    height: 95%;
-   /* flex-wrap: wrap;
-    width: 325px;*
-}
-.chart-boletos .apexcharts-legend-series{
-    margin: 0 5px !important;
-}
+
 .chart-boletos .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text{
-    font-size: 10px !important;
-} */
+   // font-size: 18px !important;
+} 
 /* End charts*/
 
 /*

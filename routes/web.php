@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MailActiveController;
 use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FaqController;
@@ -85,6 +86,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('alerts', AlertController::class);
     Route::resource('updates', UpdatesController::class);
     // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::resource('active-mail', MailActiveController::class);
 });
 
 Route::post('postback', [CommissionsController::class, 'postback'])->name('postback');
