@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Charts\AreaChart;
 use App\Charts\CartConvertionsChart;
-use App\Charts\LineChart;
 use App\Charts\DonutChart;
+use App\Charts\LineChart;
 use App\Charts\SalesChart;
+use App\Mail\SendMailRegisterUser;
 use App\Models\Postback;
 use App\Models\Sale;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class CommissionsController extends Controller
 {
@@ -28,14 +31,14 @@ class CommissionsController extends Controller
         $chaveUnica = $request;
 
         // dd($chaveUnica);
-       // dd($chart5->build());
+        // dd($chart5->build());
 
-        return view('pages.commissions.index',  [
+        return view('pages.commissions.index', [
             'chart' => $chart->build(),
             'chart2' => $chart2->build(),
             'chart3' => $chart3->build(),
             'chart5' => $chart5->build(),
-            'chart4' => $chart4->build()
+            'chart4' => $chart4->build(),
         ]);
     }
 
@@ -107,19 +110,36 @@ class CommissionsController extends Controller
 
     public function postback(Request $request)
     {
-        $values = $request->all(); 
-       
-
+        $values = $request->all();
 
         Sale::create($values);
 
         if (isset($request->trans_status) && $request->trans_status == 'Pagamento Aprovado') {
-            $user = User::where('email', $request->cliente_email)->first();
-            $finish = date('Y-m-d', strtotime("+30 days", strtotime($user->date_finish))); 
-            $user->fill([
-                'date_finish' => $finish
-            ]);
-            $user->save();
+            $user = User::where('email', $request->client_email)->first();
+            if ($user == null) {
+
+                $data = [];
+                $data['email'] = $request->email;
+                $data['name'] = $request->email;
+                $data['password'] = Str::uuid();
+                $user = User::create([
+                    'name' => $request->client_name,
+                    'email' => $request->client_email,
+                    'password' => bcrypt($data['password']),
+                    'type' => 'user',
+                    'active' => true,
+                    'date_purchase' => $request->trans_payment_date,
+                    'date_finish' => date('Y-m-d', strtotime("+30 days", strtotime($user->trans_payment_date))),
+                ]);
+
+                Mail::send(new SendMailRegisterUser($data));
+            } else {
+                $finish = date('Y-m-d', strtotime("+30 days", strtotime($user->date_finish)));
+                $user->fill([
+                    'date_finish' => $finish,
+                ]);
+                $user->save();
+            }
         }
 
         return response()->json('Success', 200);

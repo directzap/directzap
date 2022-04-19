@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -11,14 +12,11 @@ class SendMailRegisterUser extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+ 
+    private $user;
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +26,10 @@ class SendMailRegisterUser extends Mailable
      */
     public function build()
     {
-        return $this->from('victor--edu@gmail.com')->view('emails.register');
+        $this->subject('Registro');
+        $this->to($this->user['email'], $this->user['name']);
+        return $this->from('victor--edu@gmail.com')->view('emails.register', [
+            'user' => $this->user
+        ]);
     }
 }

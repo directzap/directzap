@@ -62,7 +62,7 @@
 
             <p class="text-center mt-2">
                 <span>Ainda não tem conta?</span>
-                <a href="">
+                <a href="/register">
                     Crie sua conta
                 </a>
             </p>
