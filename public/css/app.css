@@ -630,6 +630,7 @@ tspan{
 
 .apexcharts-inner {
   transform: translate(0%, 7%) !important;
+  transform: translate(0%, 3%) !important;
 }
 
 /*
